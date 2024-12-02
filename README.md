@@ -1,1 +1,5 @@
 # Formalism-of-Classical-Mechanics
+
+## Abstract
+
+Classical mechanics, foundational to both physics and mathematics, has traditionally been presented with intuitive yet often imprecise notions, leaving core concepts--such as force, mass, and acceleration--mathematically underdefined. This paper aims to contribute to Hilbert's sixth problem, specifically addressing the axiomatization of classical mechanics. Drawing inspiration from foundational critiques by Poincaré, Mach, Kirchhoff, and Hertz, this work formalizes key elements of classical mechanics using a Bourbaki-style axiomatic approach. Concepts such as force and mass are examined rigorously to resolve their cyclic definitions, and the principles of mechanics are restructured to align with contemporary standards of mathematical rigor. The resulting framework provides a clear, theorem-proof format to define and derive classical mechanics in a mathematically self-consistent manner. By addressing these foundational ambiguities, this work advances the formalization of classical mechanics as a purely mathematical discipline.

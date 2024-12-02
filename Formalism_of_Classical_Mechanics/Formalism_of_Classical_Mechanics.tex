@@ -1,0 +1,735 @@
+\documentclass[12pt]{amsart}
+
+\usepackage{amsmath, amsthm, amsfonts, amssymb}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+
+
+% Define theorem-like environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{definition*}{Definition}
+
+% Custom Proof Environment
+\renewenvironment{proof}{{\bfseries Proof.}}{\qed}
+
+\let\oldvec\vec
+\renewcommand{\vec}[1]{\oldvec{#1}\hspace{0.1em}}
+
+
+\begin{document}
+
+
+\title{Formalism Of Classical Mechanics}
+\author{Yiyang Liu}
+
+
+\begin{abstract}
+Classical mechanics, foundational to both physics and mathematics, has traditionally been presented with intuitive yet often imprecise notions, leaving core concepts--such as force, mass, and acceleration--mathematically underdefined. This paper aims to contribute to Hilbert's sixth problem, specifically addressing the axiomatization of classical mechanics. Drawing inspiration from foundational critiques by Poincaré, Mach, Kirchhoff, and Hertz, this work formalizes key elements of classical mechanics using a Bourbaki-style axiomatic approach. Concepts such as force and mass are examined rigorously to resolve their cyclic definitions, and the principles of mechanics are restructured to align with contemporary standards of mathematical rigor. The resulting framework provides a clear, theorem-proof format to define and derive classical mechanics in a mathematically self-consistent manner. By addressing these foundational ambiguities, this work advances the formalization of classical mechanics as a purely mathematical discipline.
+\end{abstract}
+
+
+
+\maketitle
+%\newpage
+
+\section*{Acknowledgment}
+I am deeply grateful to my family for their unwavering support in every aspect of my life. Their encouragement, guidance, and belief in me have been instrumental in completing this work. In particular, I would like to thank my mother, whose selfless dedication and unconditional support have been my greatest source of inspiration. 
+
+I also wish to express my profound respect and gratitude to the pioneers and predecessors who have paved the way for the scientific and mathematical understanding we have today. Their groundbreaking work and enduring vision continue to inspire and guide us in our pursuit of knowledge and truth -- for the honor of the human mind.
+
+\tableofcontents
+
+
+\newpage
+\section{Introduction}
+
+The mathematical formalization of physics has been a central aspiration in the development of modern science, exemplified by David Hilbert's Sixth Problem, which calls for the axiomatization of all physical sciences. Classical mechanics, the cornerstone of physics, remains particularly elusive in this regard. Despite its empirical success, foundational concepts such as force, mass, and acceleration often lack precise and rigorous mathematical definitions. This paper aims to address these issues by formalizing classical mechanics within an axiomatic framework.
+
+\subsection{The Need for Formalization}
+Classical mechanics, as developed by pioneers such as Newton, Lagrange, and Hamilton, stands as a cornerstone of physics and mathematics. Its principles have inspired numerous advances, yet the mathematical foundations of classical mechanics have remained largely intuitive and pre-critical. This gap in rigor has been noted by thinkers such as Henri Poincaré, Gustav Kirchhoff, Ernst Mach, and Heinrich Hertz, whose critiques highlight the lack of well-defined concepts and the prevalence of cyclic definitions.
+
+For instance, Poincaré~\cite{poincare1905} famously emphasized that the principle of force is not an empirical fact but a definition:  
+\begin{quote}
+    ``It is by definition that force is equal to the product of the mass and the acceleration; this is a principle which is henceforth beyond the reach of any future experiment.''
+\end{quote}
+
+Similarly, Kirchhoff~\cite{kirchhoff1877} defined mechanics as the description of motion resulting from applied forces, implying that force is a mathematical convenience:  
+\begin{quote}
+    ``Mechanics is the science of motion; its task is to describe the movements occurring in nature completely and in the simplest way possible.''\footnote{Translated by the author from Kirchhoff's original German: ``Die Mechanik ist die Wissenschaft von der Bewegung; als ihre Aufgabe bezeichnen wir: die in der Natur vor sich gehenden Bewegungen vollständig und auf die einfachste Weise zu beschreiben.''}
+\end{quote}
+
+Mach~\cite{mach1893} critiqued the interdependence of mass and density, noting the circularity in their definitions:  
+\begin{quote}
+    ``The concept of mass is not made clearer by describing mass as the product of the volume into the density, as density itself denotes simply the mass of unit of volume.''
+\end{quote}
+
+Mach also pointed out that Newton's First Law (inertia) are tautological when paired with the definition of force:
+\begin{quote}
+    ``According to the latter, without force there is no acceleration, consequently only rest or uniform motion in a straight line.''
+\end{quote}
+
+
+Hertz~\cite{hertz1899}, in his reformulation of mechanics, explicitly expressed his concern about the logical inadequacies in the definitions of fundamental physical concepts: 
+\begin{quote}
+    ``I fancy that Newton himself must have felt this embarrassment when he gave the rather forced definition of mass as being the product of volume and density. I fancy that Thomson and Tait must also have felt it when they remarked that this is really more a definition of density than of mass, and nevertheless contented themselves with it as the only definition of mass.''
+\end{quote}
+
+Such critiques underscore the need for a rigorous axiomatic framework, which this paper aims to provide by addressing foundational ambiguities in classical mechanics. Inspired by Hilbert's Sixth Problem, which called for the formalization of all physical sciences, including mechanics, this work adopts an axiomatic methodology characterized by abstraction, systematic rigor, and a departure from physical intuition in favor of logical clarity. Despite notable advancements in the axiomatization of quantum mechanics and dynamical systems, classical mechanics remains less thoroughly formalized. Building on Hilbert's vision and the Bourbaki tradition, this paper rigorously defines core concepts such as force, mass, and momentum, presenting classical mechanics as a self-consistent mathematical framework. Through the axiom-definition-theorem-proof structure, this work reconstructs classical mechanics as a purely mathematical theory, free from empirical ambiguities.
+
+\subsection{Historical Context and Foundations} Efforts to formalize mechanics date back to the 19th century, when foundational issues in geometry inspired parallel critiques in physics. Hilbert's Sixth Problem, proposed in 1900, explicitly called for the axiomatization of physical sciences, marking a pivotal shift toward rigor in their treatment. Quantum mechanics (e.g., von Neumann's axioms~\cite{vonneumann1932}), dynamical systems (e.g., Birkhoff's ergodic theory~\cite{birkhoff1931}), and statistical mechanics (e.g., Kolmogorov's probabilistic frameworks~\cite{kolmogorov1950}) have since benefited from this approach. Classical mechanics, however, has received comparatively limited attention. Early efforts, such as those by G. Hamel~\cite{hamel1909}, acknowledged the nascency of the axiomatic method in mechanics, stating: 
+\begin{quote}
+    ``The axiomatic method is even younger in mechanics. [...] A systematic examination in the sense of Hilbert's axiomatics had not been achieved.''
+\end{quote}
+
+This paper builds on such efforts, addressing the logical structure and ambiguities of classical mechanics. It aims not only to clarify its foundational concepts but also to demonstrate the applicability of axiomatic methods to fundamental questions in physics.
+
+\subsection{Scope and Methodology}
+The approach adopted in this paper is characterized by the following features:
+
+\begin{enumerate}
+    \item \textbf{Axiomatic Framework}: The principles of classical mechanics are reformulated as axioms, avoiding reliance on intuitive or imprecise definitions.
+    \item \textbf{Logical Structure}: The paper adheres to the axiom-definition-theorem-proof format, ensuring that all results are rigorously derived.
+    \item \textbf{Abstract Generality}: The formalism deliberately abstracts away from physical intuition, emphasizing mathematical precision.
+    \item \textbf{Bourbaki Style}: Consistent with the Bourbaki tradition, this work emphasizes rigor over motivation, presenting mechanics as a self-contained mathematical theory.
+\end{enumerate}
+
+While this paper does not claim to comprehensively axiomatize all aspects of classical mechanics, it seeks to formalize its core principles and provide a foundation for future work. By addressing the foundational challenges identified by Mach, Poincaré, Hertz, and others, this work contributes to the ongoing effort to fulfill Hilbert's vision for the mathematical formalization of physics.
+
+
+
+
+\newpage
+
+\section{Content}
+
+\begin{definition}
+    \textbf{Physical Space}: The physical space is a 4-dimensional Riemannian manifold $ (\mathbb{V}, \boldsymbol{g}) $, where $ \mathbb{V} $ is a 4-dimensional real vector space, and $ \boldsymbol{g} $ is the metric tensor. An orthonormal basis for $ \mathbb{V} $ is given by $\{\vec{e}_t, \vec{e}_x, \vec{e}_y, \vec{e}_z\}$. The inner product of two vectors $ \vec{u}, \vec{v} \in \mathbb{V} $ is defined by $ \vec{u} \cdot \vec{v} = \vec{u}^{T} \boldsymbol{g}\ \vec{v} $, where the metric tensor $ \boldsymbol{g} $ is given by
+$$
+\boldsymbol{g} = \begin{bmatrix}
+0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{bmatrix}
+$$
+
+\end{definition}
+
+\begin{definition}
+\textbf{Object}: An object $i$ is a trivial concept that has mass $m_i$
+\end{definition}
+
+\begin{definition}
+\textbf{Mass}: The mass $m_i$ of an object $i$ is a function where $m_i (t) \in \mathbb{R}$
+\end{definition}
+
+\begin{definition}
+\textbf{Object Set}: The object set $\mathbb{O}$ is the set which contains all the objects, and $\left | \mathbb{O} \right | = n$, where $n \in \mathbb{N}$
+\end{definition}
+
+\begin{definition}
+\textbf{Time}: Time $t$ is a variable where $t \in \mathbb{R}$ 
+\end{definition}
+
+\begin{definition}
+\textbf{Point Mass}: A point mass $i$ is an object that has constant mass, where $\dfrac{\mathrm{d} m_i (t)}{\mathrm{d} t} = 0$ and $m_i (t) > 0$
+\end{definition}
+
+\begin{definition}
+\textbf{Point Mass Set}: The point mass set $\mathbb{PM}$ is the set which contains all the point masses, and $\left | \mathbb{PM} \right | = n$, where $n \in \mathbb{Z}^{+}$
+\end{definition}
+
+\begin{definition}
+\textbf{Relative Position}: In a physical space of $\left | \mathbb{PM} \right | = n$, the relative position of a point mass $i$ relative to a point mass $j$ is denoted as
+$$\vec{q}_{i-j} (t) := \left< t, x_{i-j}(t), y_{i-j}(t), z_{i-j}(t) \right> = t\vec{e}_t + x_{i-j}(t) \vec{e}_x + y_{i-j}(t) \vec{e}_y + z_{i-j}(t) \vec{e}_z $$
+where $t, x_{i-j}(t), y_{i-j}(t), z_{i-j}(t) \in \mathbb{R}$
+\end{definition}
+
+\begin{definition}
+\textbf{Position}: In a physical space of $\left | \mathbb{PM} \right | = n$, the velocity of a point mass $i$ is denoted as
+$$\vec{q}_i(t) :=\displaystyle \sum_{j \in \mathbb{PM}} \vec{q}_{i-j} (t)$$
+\end{definition}
+
+\begin{axiom}
+\textbf{Position Existence and Uniqueness}: $$\forall \  i \in \mathbb{O}, \quad \exists!\ \vec{q}_i : \mathbb{R} \to \mathbb{R}^4$$
+\end{axiom}
+
+\begin{axiom}
+\textbf{Position Smoothness}:
+$$
+\forall \  i \in \mathbb{O}, \quad \vec{q}_i \in C^{\infty}(\mathbb{R})
+$$
+where $C^{\infty}(\mathbb{R})$ denotes the physical space of functions that are infinitely differentiable on $\mathbb{R}$
+
+\end{axiom}
+
+\begin{definition}
+\textbf{Relative Velocity}: In a physical space of $\left | \mathbb{PM} \right | = n$, the relative velocity of a point mass $i$ relative to a point mass $j$ is denoted as
+$$\vec{v}_{i-j} (t) := \dfrac{\mathrm{d} \vec{q}_{i-j}(t)}{\mathrm{d} t} $$
+\end{definition}
+
+\begin{definition}
+\textbf{Velocity (0)}: In a physical space of $\left | \mathbb{PM} \right | = n$, the velocity of a point mass $i$ is denoted as
+$$\vec{v}_i(t) := \displaystyle \sum_{j \in \mathbb{PM}} \vec{v}_{i-j} (t)$$
+\end{definition}
+
+\begin{theorem}
+\textbf{Velocity (1)}: In a physical space of $\left | \mathbb{PM} \right | = n$, the velocity of a point mass $i$ is
+$$\vec{v}_i(t) = \dfrac{\mathrm{d} \vec{q}_{i} (t)}{\mathrm{d} t}$$
+\end{theorem}
+
+\begin{proof}
+    Apply \textbf{Velocity (0)}, \textbf{Relative Velocity} and \textbf{Position},
+    $$\vec{v}_i (t) = \sum_{j \in \mathbb{PM}} \vec{v}_{i-j} (t) = \sum_{j \in \mathbb{PM}} \left ( \dfrac{\mathrm{d} \vec{q}_{i-j}(t)}{\mathrm{d} t} \right )= \dfrac{\mathrm{d} \left ( \displaystyle \sum_{j \in \mathbb{PM}} \vec{q}_{i-j}(t) \right )}{\mathrm{d} t} = \dfrac{\mathrm{d} \vec{q}_{i}(t)}{\mathrm{d} t} $$
+    $$\implies \vec{v}_i(t) = \dfrac{\mathrm{d} \vec{q}_{i} (t)}{\mathrm{d} t} $$
+\end{proof}
+
+\begin{definition}
+\textbf{Relative Acceleration}: In a physical space of $\left | \mathbb{PM} \right | = n$, the relative acceleration of a point mass $i$ relative to a point mass $j$ is denoted as $\vec{a}_{i-j}(t) := \dfrac{\mathrm{d} \vec{v}_{i-j} (t)}{\mathrm{d} t} $
+\end{definition}
+
+\begin{definition}
+\textbf{Acceleration (0)}: In a physical space of $\left | \mathbb{PM} \right | = n$, the acceleration of a point mass $i$ is denoted as $\vec{a}_i(t) := \displaystyle \sum_{j \in \mathbb{PM}} \vec{a}_{i-j} (t)$
+\end{definition}
+
+\begin{theorem}
+\textbf{Acceleration (1)}: In a physical space of $\left | \mathbb{PM} \right | = n$, the velocity of a point mass $i$ is $$\vec{a}_i(t) = \dfrac{\mathrm{d} \vec{v}_{i} (t)}{\mathrm{d} t}$$
+\end{theorem}
+
+\begin{proof}
+    Apply \textbf{Acceleration (0)}, \textbf{Relative Acceleration}, \textbf{Relative Velocity},
+    $$\vec{a}_i (t) = \sum_{j \in \mathbb{PM}} \vec{a}_{i-j} (t) = \sum_{j \in \mathbb{PM}} \left ( \dfrac{\mathrm{d} \vec{v}_{i-j}(t)}{\mathrm{d} t} \right )= \dfrac{\mathrm{d} \left ( \displaystyle \sum_{j \in \mathbb{PM}} \vec{v}_{i-j}(t) \right )}{\mathrm{d} t} = \dfrac{\mathrm{d} \vec{v}_{i}(t)}{\mathrm{d} t} $$
+    $$\implies \vec{a}_i(t) = \dfrac{\mathrm{d} \vec{v}_{i} (t)}{\mathrm{d} t} $$
+\end{proof}
+
+\begin{theorem}
+\textbf{Acceleration (2)}: In a physical space of $\left | \mathbb{PM} \right | = n$, the velocity of a point mass $i$ is $$\vec{a}_i(t) = \dfrac{\mathrm{d}^2 \vec{q}_{i} (t)}{\mathrm{d} t^2}$$
+\end{theorem}
+
+\begin{proof}
+    Apply \textbf{Acceleration (1)}, \textbf{Velocity} and \textbf{Relative Velocity},
+    \begin{align*}
+    \vec{a}_i (t) = \dfrac{\mathrm{d} \vec{v}_{i} (t)}{\mathrm{d} t} = \dfrac{\mathrm{d} \left ( \displaystyle \sum_{j \in \mathbb{PM}} \vec{v}_{i-j}(t) \right )}{\mathrm{d} t} = \dfrac{\mathrm{d} \left ( \displaystyle \sum_{j \in \mathbb{PM}} \left ( \dfrac{\mathrm{d} \vec{q}_{i-j}(t)}{\mathrm{d} t} \right ) \right )}{\mathrm{d} t} = \displaystyle \sum_{j \in \mathbb{PM}} \left ( \dfrac{\mathrm{d} }{\mathrm{d} t} \left ( \dfrac{\mathrm{d}  \vec{q}_{i-j}(t) }{\mathrm{d} t} \right ) \right ) = \dfrac{\mathrm{d}^2 \vec{q}_{i} (t)}{\mathrm{d} t^2}
+    \end{align*}
+    $$\implies \vec{a}_i(t) = \dfrac{\mathrm{d}^2 \vec{q}_{i} (t)}{\mathrm{d} t^2} $$
+\end{proof}
+
+\begin{definition}
+\textbf{Relative Linear Momentum}: In a physical space of $\left | \mathbb{PM} \right | = n$, the relative linear momentum of a point mass $i$ relative to a point mass $j$ is denoted as $\vec{p}_{i-j} (t) := m_i (t)\vec{v}_{i-j} (t)$ 
+\end{definition}
+
+\begin{definition}
+\textbf{Linear Momentum (0)}: In a physical space of $\left | \mathbb{PM} \right | = n$, the linear momentum of a point mass $i$ is denoted as $\vec{p}_i(t) := \displaystyle \sum_{j \in \mathbb{PM}} \vec{p}_{i-j} (t)$ 
+\end{definition}
+ 
+\begin{theorem}
+    \textbf{Linear Momentum (1)}: In a physical space of $\left | \mathbb{PM} \right | = n$, the linear momentum of a point mass $i$ is
+    $$\vec{p}_i(t) =  m_i (t)\vec{v}_{i}(t)$$
+\end{theorem}
+
+\begin{proof}
+    Apply \textbf{Linear Momentum (0)}, \textbf{Relative Linear Momentum} and \textbf{Velocity (0)},
+    $$\vec{p}_i(t) =  \displaystyle \sum_{j \in \mathbb{PM}} \vec{p}_{i-j} (t) = \displaystyle \sum_{j \in \mathbb{PM}} \left ( m_i (t)\vec{v}_{i-j} (t) \right ) =  m_i (t) \displaystyle \sum_{j \in \mathbb{PM}} \vec{v}_{i-j} (t) = m_i (t) \vec{v}_i(t) $$
+    $$\implies \vec{p}_i(t) = m_i (t)\vec{v}_i(t)$$
+\end{proof}
+
+\begin{definition}
+\textbf{Total Linear Momentum}: In a physical space of $\left | \mathbb{PM} \right | = n$, the total linear momentum is denoted as $\vec{p}(t) := \displaystyle \sum_{i \in \mathbb{PM}} \vec{p}_{i} (t)$ 
+\end{definition}
+
+\begin{definition}
+\textbf{Relative Force}: In a physical space of $\left | \mathbb{PM} \right | = n$, the relative force from a point mass $j$ exerted on a point mass $i$ is denoted as $  \vec{F}_{i-j}(t) := \dfrac{\mathrm{d} \vec{p}_{i-j} (t)}{\mathrm{d} t} $
+\end{definition}
+
+\begin{definition}
+\textbf{Inertial Reference Frame (IRF)}: In a physical space of $\left | \mathbb{PM} \right | = n$, $$  \forall \  i \in \mathbb{PM}, \quad \vec{F}_{i-i}(t)=\vec{0} $$
+where $i\ne j$
+\end{definition}
+
+\begin{definition}
+\textbf{Non-Inertial Reference Frame (Non-IRF)}: In a physical space of $\left | \mathbb{PM} \right | = n$,$$\exists \  i \in \mathbb{PM}, \quad \vec{F}_{i-i} (t)\ne \vec{0} $$
+\end{definition}
+
+\begin{definition}
+\textbf{Force (0)}: In a physical space of $\left | \mathbb{PM} \right | = n$, the total relative forces from other point masses exerted on a point mass $i$ is denoted as $\vec{F}_{i}(t):= \displaystyle \sum_{j \in \mathbb{PM}} \vec{F}_{i-j}(t) $
+\end{definition}
+
+\begin{theorem}
+ \textbf{Newton's 2nd Law}: In a physical space of $\left | \mathbb{PM} \right | = n$, $$ \vec{F}_{i}(t) = \dfrac{\mathrm{d} \vec{p}_{i}(t)}{\mathrm{d} t} $$
+\end{theorem}
+
+\begin{proof}
+Apply \textbf{Force (0)}, \textbf{Relative Force} and \textbf{Linear Momentum (0)},
+
+$$ \vec{F}_{i}(t) = \displaystyle \sum_{j \in \mathbb{PM}} \vec{F}_{i-j}(t) = \displaystyle \sum_{j \in \mathbb{PM}} \left ( \dfrac{\mathrm{d} \vec{p}_{i-j} (t)}{\mathrm{d} t} \right ) = \dfrac{\mathrm{d} \left (  \displaystyle \sum_{j \in \mathbb{PM}} \vec{p}_{i-j} (t) \right ) }{\mathrm{d} t} = \dfrac{\mathrm{d}  \vec{p}_{i} (t)}{\mathrm{d} t} $$
+
+$$ \implies \vec{F}_{i}(t) = \dfrac{\mathrm{d}  \vec{p}_{i} (t)}{\mathrm{d} t} $$
+\end{proof}
+
+\begin{theorem}
+ \textbf{Force (1)}: In a physical space of $\left | \mathbb{PM} \right | = n$, $$ \vec{F}_{i}(t) = m_i(t) \vec{a}_i(t)$$
+\end{theorem}
+
+\begin{proof}
+    Apply \textbf{Newton's 2nd Law}, \textbf{Linear Momentum (1)}, \textbf{Point Mass} and \textbf{Acceleration (1)},
+    $$ \vec{F}_{i}(t) = \dfrac{\mathrm{d} \vec{p}_{i}(t)}{\mathrm{d} t} = \dfrac{\mathrm{d} \left (m_i(t)\vec{v}_i(t) \right )}{\mathrm{d} t} = m_i(t)\dfrac{\mathrm{d} \left (\vec{v}_i(t) \right )}{\mathrm{d} t} = m_i(t) \vec{a}_i(t) $$
+\end{proof}
+
+\begin{theorem}
+ \textbf{Force (2)}: In a physical space of $\left | \mathbb{PM} \right | = n$, $$ \vec{F}_{i}(t) = m_i(t) \dfrac{\mathrm{d}^2 \vec{q}_{i} (t)}{\mathrm{d} t^2}$$
+\end{theorem}
+
+\begin{proof}
+    Apply \textbf{Force (1)} and \textbf{Acceleration (2)},
+    $$ \vec{F}_{i}(t) = m_i(t) \vec{a}_i(t) = m_i(t) \dfrac{\mathrm{d}^2 \vec{q}_{i} (t)}{\mathrm{d} t^2}$$
+\end{proof}
+
+\begin{theorem}
+    \textbf{Newton's 1st Law}: In a physical space of $\left | \mathbb{PM} \right | = n$, if the force exerted on point mass $i$ is $\vec{0}$, which $\vec{F}_{i}(t) = \vec{0}$, then 
+    $$ \vec{v}_i(t) = \vec{v}_c $$
+    where $\vec{v}_c$ is a constant which $\vec{v}_c \in \mathbb{R}$
+\end{theorem}
+
+\begin{proof}
+    Apply \textbf{Force (1)}, \textbf{Point Mass} and \textbf{Acceleration (1)},
+    \begin{align*}
+        \vec{F}_{i}(t) &= \vec{0} \\
+        m_i(t) \vec{a}_i(t) &= \vec{0} \\
+        \int \vec{a}_i(t) \, \mathrm{d} t &= \int \vec{0} \, \mathrm{d} t \\
+        \int \dfrac{\mathrm{d} \vec{v}_{i} (t)}{\mathrm{d} t} \, \mathrm{d} t &= \vec{v}_c \\
+        \vec{v}_i(t) &= \vec{v}_c
+    \end{align*}
+    where $\vec{v}_c$ is a constant which $\vec{v}_c \in \mathbb{R}$
+\end{proof}
+
+\begin{proposition}
+    \textbf{Norton's Dome Problem Is False}: In Norton's dome problem ($\left |\mathbb{PM}\right | = 1$), the conditions of ball $i \in \mathbb{PM}$ are 
+    $$ \vec{F}_i^{[\vec{e}_x]}(t) = m_i(t) \sqrt{\vec{q}_i^{[\vec{e}_x]}(t)} , \quad \vec{v}_i^{[\vec{e}_x]}(0) = 0, \quad \vec{q}_i^{[\vec{e}_x]}(0) = 0$$
+    and this proposition is False.\footnote{Norton's Dome is a thought experiment in classical mechanics, proposed by John Norton, which presents a scenario where determinism appears to break down. For details, see \cite{norton2008dome}.}
+\end{proposition}
+
+\begin{proof}
+    Apply \textbf{Force (2)},
+    \begin{align*}
+    \vec{F}_i^{[\vec{e}_x]}(t) &= m_i(t)\sqrt{\vec{q}_i^{[\vec{e}_x]}(t)} \\
+    \left ( m_i(t) \dfrac{\mathrm{d}^2 \vec{q}_{i} (t)}{\mathrm{d} t^2} \right )^{[\vec{e}_x]} &= m_i(t)\sqrt{\vec{q}_i^{[\vec{e}_x]}(t)}\\
+     m_i(t) \dfrac{\mathrm{d}^2 }{\mathrm{d} t^2} \left ( \vec{q}^{[\vec{e}_x]}_{i} (t) \right ) &= m_i(t)\sqrt{\vec{q}_i^{[\vec{e}_x]}(t)}
+    \end{align*}
+    Apply \textbf{Point Mass},
+    $$
+    \implies \dfrac{\mathrm{d}^2 }{\mathrm{d} t^2} \left ( \vec{q}^{[\vec{e}_x]}_{i} (t) \right ) = \sqrt{\vec{q}_i^{[\vec{e}_x]}(t)}, \quad \vec{v}_i^{[\vec{e}_x]}(0) = 0, \quad \vec{q}_i^{[\vec{e}_x]}(0) = 0 
+    $$
+    $$
+    \implies \vec{q}^{[\vec{e}_x]}_{i}(t) = \begin{cases} 0, & \forall \ t<t_0 \\ \dfrac{1}{144}(t - t_0)^4, & \forall \ t \geq t_0 \end{cases}, \quad \text{where } t_0 \in \mathbb{R}
+    $$
+    
+    $$
+    \implies \vec{q}^{[\vec{e}_x]}_{i}(t) \text{ is not unique.} \implies \vec{q}_{i}(t) \text{ is not unique.} 
+    $$
+    \\
+    Apply \textbf{Position Existence and Uniqueness}, therefore Norton's dome problem is False.
+    
+\end{proof}
+
+\begin{proof}
+Apply \textbf{Newton's 2nd Law},
+$$ \vec{F}_{i}(t) - \dfrac{\mathrm{d} \vec{p}_{i}(t)}{\mathrm{d} t} = \dfrac{\mathrm{d} \vec{p}_{i}(t)}{\mathrm{d} t} - \dfrac{\mathrm{d} \vec{p}_{i}(t)}{\mathrm{d} t} = \vec{0} $$
+$$ \implies \vec{F}_{i}(t) - \dfrac{\mathrm{d} \vec{p}_{i}(t)}{\mathrm{d} t} = \vec{0} $$
+\end{proof}
+
+\begin{definition}
+\textbf{Gravitational Constant}: The gravitational constant is a constant $C_G \in \mathbb{R}$
+\end{definition}
+
+\begin{axiom}
+\textbf{Newton's Law of Universal Gravitation}: In a physical space of $\left | \mathbb{PM} \right | = n \ge 2$,
+
+$$  \forall \  i,j \in \mathbb{PM}, \quad \vec{F}_{i-j}(t)= C_{G} \ \dfrac{m_i (t) m_j (t)}{\left \| \vec{r}_{i-j} (t)\right \|^2} \ \hat{r}_{i-j} (t) $$
+where $i \ne j$, $\vec{r}_{i-j} (t) = \vec{q}_{i} (t)- \vec{q}_{j} (t)$, $\hat{r}_{i-j} (t) = \dfrac{\vec{r}_{i-j} (t)}{\left \| \vec{r}_{i-j} (t) \right \|}$
+\end{axiom}
+
+\begin{theorem}
+\textbf{Newton's 3rd Law}: In a physical space of $\left | \mathbb{PM} \right | = n \ge 2 $, $$\forall \  i,j \in \mathbb{PM}, \quad \vec{F}_{i-j}(t)=-\vec{F}_{j-i}(t)$$
+where $i \ne j$
+\end{theorem}
+
+\begin{proof}
+Apply \textbf{Newton's Law of Universal Gravitation}
+
+\begin{align*} \vec{F}_{i-j}(t) &= C_{G} \ \dfrac{m_i (t) m_j (t)}{\left \| \vec{r}_{i-j} (t) \right \|^2} \ \hat{r}_{i-j} (t) = C_{G} \ \dfrac{m_j (t) m_i (t)}{\left \|- \vec{r}_{j-i}(t) \right \|^2} \left (-\hat{r}_{j-i}(t) \right ) \\
+&=- C_{G} \ \dfrac{m_i (t) m_j (t)}{\left \| \vec{r}_{j-i}(t) \right \|^2} \ \hat{r}_{j-i}(t) =- \vec{F}_{j-i}(t)
+\end{align*}
+$$ \implies \vec{F}_{i-j}(t) = - \vec{F}_{j-i}(t) $$
+
+\end{proof}
+
+\begin{theorem}
+\textbf{Conservation Of Total Linear Momentum (0)}: In a physical space of $\left | \mathbb{PM} \right | = n$, if the total force exerted on all point masses is $\vec{0}$, which $\displaystyle\sum_{i \in \mathbb{PM}}\vec{F}_i (t)=\vec{0}$, then the total linear momentum is conserved, which $$ \sum_{i \in \mathbb{PM}} \vec{p}_{i}(t_F) - \sum_{i \in \mathbb{PM}} \vec{p}_{i}(t_I)  = \vec{0} $$
+\end{theorem}
+
+\begin{proof}
+
+Apply \textbf{Newton's 2nd Law},
+
+$$ \sum_{i \in \mathbb{PM}} \vec{F}_i(t)=\vec{0} \implies \sum_{i \in \mathbb{PM}} \vec{F}_i(t)= \sum_{i \in \mathbb{PM}} \left(\dfrac{\mathrm{d} \vec{p}_i (t)}{\mathrm{d} t}\right)= \dfrac{\displaystyle \mathrm{d}\left( \sum_{i \in \mathbb{PM}} \vec{p}_i (t)\right)}{\mathrm{d} t} =\vec{0} $$
+
+$$ \dfrac{\displaystyle\mathrm{d}\left( \sum_{i \in \mathbb{PM}} \vec{p}_i (t)\right)}{\mathrm{d} t}=\vec{0} \implies \int_{t_I}^{t_F} \dfrac{\displaystyle \mathrm{d}\left( \sum_{i \in \mathbb{PM}} \vec{p}_i (t)\right)}{\mathrm{d} t} \ \mathrm{d} t = \vec{0} \implies \sum_{i \in \mathbb{PM}} \left( \int_{\vec{p}_{i}(t_I)}^{\vec{p}_{i}(t_F)} \mathrm{d} \left ( \vec{p}_i (t) \right ) \right) = \vec{0} $$
+
+$$ \implies \sum_{i \in \mathbb{PM}} \vec{p}_{i}(t_F) - \sum_{i \in \mathbb{PM}} \vec{p}_{i}(t_I)  = \vec{0} $$
+
+\end{proof}
+
+\begin{definition}
+\textbf{Relative Angular Momentum}: The relative angular momentum of a point mass $i$ relative to a point mass $j$ is denoted as 
+
+$$\boldsymbol{L}_{i-j}(t) :=  \begin{bmatrix}
+0 & \boldsymbol{L}^{[\vec{e}_t,\vec{e}_x]}_{i-j} (t)& \boldsymbol{L}^{[\vec{e}_t,\vec{e}_y]}_{i-j} (t)& \boldsymbol{L}^{[\vec{e}_t,\vec{e}_z]}_{i-j} (t)\\\\
+-\boldsymbol{L}^{[\vec{e}_t,\vec{e}_x]}_{i-j} (t)& 0 & \boldsymbol{L}^{[\vec{e}_x,\vec{e}_y]}_{i-j} (t)& \boldsymbol{L}^{[\vec{e}_x,\vec{e}_z]}_{i-j} (t)\\\\
+-\boldsymbol{L}^{[\vec{e}_t,\vec{e}_y]}_{i-j} (t)& -\boldsymbol{L}^{[\vec{e}_x,\vec{e}_y]}_{i-j}(t) & 0 & \boldsymbol{L}^{[\vec{e}_y,\vec{e}_z]}_{i-j} (t)\\\\
+-\boldsymbol{L}^{[\vec{e}_t,\vec{e}_z]}_{i-j}(t) & -\boldsymbol{L}^{[\vec{e}_x,\vec{e}_z]}_{i-j} (t)& -\boldsymbol{L}^{[\vec{e}_y,\vec{e}_z]}_{i-j}(t) & 0
+\end{bmatrix} $$
+\\\\
+where $\boldsymbol{L}^{[a,b]}_{i-j} (t) = \vec{q}^{[a]}_{i-j} (t) \vec{p}^{[b]}_{i-j} (t) - \vec{q}^{[b]}_{i-j} (t) \vec{p}^{[a]}_{i-j} (t)$ and $a, b \in \{ \vec{e}_t, \vec{e}_x, \vec{e}_y, \vec{e}_z \}$
+\end{definition}
+
+\begin{definition}
+\textbf{Angular Momentum}: In a physical space of $\left | \mathbb{PM} \right | = n$, the angular momentum of a point mass $i$ is denoted as $ \boldsymbol{L}_i(t) := \displaystyle \sum_{j \in \mathbb{PM}} \boldsymbol{L}_{i-j}(t) $ 
+\end{definition}
+
+\begin{definition}
+\textbf{Total Angular Momentum}: In a physical space of $\left | \mathbb{PM} \right | = n$, the total angular momentum is denoted as $\boldsymbol{L}(t) := \displaystyle \sum_{i \in \mathbb{PM}} \boldsymbol{L}_{i} (t)$ 
+\end{definition}
+
+
+\begin{definition}
+\textbf{Relative Torque}: The relative torque from a point mass $j$ exerted on a point mass $i$ is denoted as $ \boldsymbol{\tau}_{i-j} (t) := \dfrac{\mathrm{d} \boldsymbol{L}_{i-j}(t)}{\mathrm{d} t} $
+\end{definition}
+
+\begin{theorem}
+    \textbf{Relative Torque Force}: The relative torque from a point mass $j$ exerted on a point mass $i$ satisfies: 
+    $$\boldsymbol{\tau}_{i-j} ^{[a,b]} (t) = \vec{q}^{[a]}_{i-j} (t)\vec{F}^{[b]}_{i-j} (t) - \vec{q}^{[b]}_{i-j} (t) \vec{F}^{[a]}_{i-j} (t)$$
+    where $a, b \in \{ \vec{e}_t, \vec{e}_x, \vec{e}_y, \vec{e}_z \}$
+\end{theorem}
+
+\begin{proof}
+
+Apply \textbf{Relative Torque}, \textbf{Relative Angular Momentum},
+$$ \boldsymbol{\tau}_{i-j} (t) = \dfrac{\mathrm{d} \boldsymbol{L}_{i-j}(t)}{\mathrm{d} t} \implies \boldsymbol{\tau}^{[a,b]}_{i-j} (t) = \dfrac{\mathrm{d} \left ( \boldsymbol{L}^{[a,b]}_{i-j} (t) \right )}{\mathrm{d} t} = \dfrac{\mathrm{d} \left (\vec{q}^{[a]}_{i-j} (t) \vec{p}^{[b]}_{i-j} (t) - \vec{q}^{[b]}_{i-j} (t) \vec{p}^{[a]}_{i-j} (t) \right )}{\mathrm{d} t} $$
+    
+\begin{align*} &= \dfrac{\mathrm{d} \left ( \vec{q}^{[a]}_{i-j} (t) \vec{p}^{[b]}_{i-j} (t) \right )}{\mathrm{d} t} - \dfrac{\mathrm{d} \left ( \vec{q}^{[b]}_{i-j} (t) \vec{p}^{[a]}_{i-j} (t) \right )}{\mathrm{d} t} \\
+&= \dfrac{\mathrm{d} \left ( \vec{q}^{[a]}_{i-j} (t) \right )}{\mathrm{d} t} \vec{p}^{[b]}_{i-j} (t) + \vec{q}^{[a]}_{i-j} (t) \dfrac{\mathrm{d} \left ( \vec{p}^{[b]}_{i-j} (t) \right )}{\mathrm{d} t} - \dfrac{\mathrm{d} \left ( \vec{q}^{[b]}_{i-j} (t) \right ) }{\mathrm{d} t} \vec{p}^{[a]}_{i-j} (t) - \vec{q}^{[b]}_{i-j} (t) \dfrac{\mathrm{d} \left ( \vec{p}^{[a]}_{i-j} (t) \right ) }{\mathrm{d} t} \\
+&= \left ( \dfrac{\mathrm{d}  \vec{q}_{i-j} (t)}{\mathrm{d} t} \right ) ^{[a]} \vec{p}^{[b]}_{i-j} (t) + \vec{q}^{[a]}_{i-j} (t) \left (  \dfrac{\mathrm{d} \vec{p}_{i-j} (t)}{\mathrm{d} t} \right )^{[b]} - \left (\dfrac{\mathrm{d}  \vec{q}_{i-j} (t) }{\mathrm{d} t}\right ) ^{[b]} \vec{p}^{[a]}_{i-j} (t) - \vec{q}^{[b]}_{i-j} (t) \left ( \dfrac{\mathrm{d}  \vec{p}_{i-j} (t) }{\mathrm{d} t}  \right )^{[a]}
+\end{align*}
+Apply \textbf{Relative Velocity} and \textbf{Relative Force}, 
+$$= \vec{v}_{i-j} ^{[a]} (t) \vec{p}^{[b]}_{i-j} (t) + \vec{q}^{[a]}_{i-j} (t) \vec{F}_{i-j}^{[b]} (t) - \vec{v}_{i-j} ^{[b]} (t) \vec{p}^{[a]}_{i-j} (t) - \vec{q}^{[b]}_{i-j} (t) \vec{F}_{i-j}^{[a]} (t)$$
+
+Apply \textbf{Relative Linear Momentum},
+\begin{align*}
+ &= \vec{v}_{i-j} ^{[a]} (t) \left ( m_i (t)\vec{v}_{i-j} (t) \right )^{[b]} + \vec{q}^{[a]}_{i-j} (t) \vec{F}_{i-j}^{[b]} (t) - \vec{v}_{i-j} ^{[b]} (t) \left ( m_i (t)\vec{v}_{i-j} (t) \right )^{[a]} - \vec{q}^{[b]}_{i-j} (t) \vec{F}_{i-j}^{[a]} (t) \\
+ &= \vec{v}_{i-j} ^{[a]} (t)  m_i (t) \vec{v}_{i-j} ^{[b]} (t) + \vec{q}^{[a]}_{i-j} (t) \vec{F}_{i-j}^{[b]} (t) - \vec{v}_{i-j} ^{[b]} (t)  m_i (t)\vec{v}_{i-j} ^{[a]} (t) - \vec{q}^{[b]}_{i-j} (t) \vec{F}_{i-j}^{[a]} (t) \\
+ &= \left ( \vec{v}_{i-j} ^{[a]} (t)  m_i (t) \vec{v}_{i-j} ^{[b]} (t) - \vec{v}_{i-j} ^{[a]} (t)  m_i (t)\vec{v}_{i-j} ^{[b]} (t) \right ) + \left ( \vec{q}^{[a]}_{i-j} (t) \vec{F}_{i-j}^{[b]} (t) - \vec{q}^{[b]}_{i-j} (t) \vec{F}_{i-j}^{[a]} (t) \right )\\
+ &= 0 + \left ( \vec{q}^{[a]}_{i-j} (t) \vec{F}^{[b]}_{i-j} (t) - \vec{q}^{[b]}_{i-j} (t) \vec{F}^{[a]}_{i-j} (t) \right )= \vec{q}^{[a]}_{i-j} (t) \vec{F}^{[b]}_{i-j} (t) - \vec{q}^{[b]}_{i-j} (t) \vec{F}^{[a]}_{i-j} (t)
+ \end{align*}
+$$\implies \boldsymbol{ \tau}_{i-j}^{[a,b]} (t) = \vec{q}^{[a]}_{i-j} (t) \vec{F}^{[b]}_{i-j} (t) - \vec{q}^{[b]}_{i-j} (t) \vec{F}^{[a]}_{i-j} (t)$$
+
+\end{proof}
+
+\begin{definition}
+\textbf{Torque}: In a physical space of $\left | \mathbb{PM} \right | = n$, the total relative torque from other point masses exerted on a point mass $i$ is denoted as $ \boldsymbol{\tau}_{i}(t) := \displaystyle \sum_{j \in \mathbb{PM}} \boldsymbol{\tau}_{i-j} (t) $
+\end{definition}
+
+\begin{theorem}
+    \textbf{Newton's 2nd Law For Torque}: In a physical space of $\left | \mathbb{PM} \right | = n$, $ \boldsymbol{\tau}_{i}(t) = \dfrac{\mathrm{d} \boldsymbol{L}_i(t) }{\mathrm{d} t} $
+\end{theorem}
+
+\begin{proof}
+    
+    Apply \textbf{Torque}, \textbf{Relative Torque}, \textbf{Angular Momentum} and \textbf{Relative Angular Momentum},
+    $$ \boldsymbol{\tau}_{i}(t) =  \displaystyle \sum_{j \in \mathbb{PM}} \boldsymbol{\tau}_{i-j} (t) = \displaystyle \sum_{j \in \mathbb{PM}} \left (  \dfrac{\mathrm{d} \boldsymbol{L}_{i-j}(t)}{\mathrm{d} t} \right ) =  \dfrac{\mathrm{d} \left (  \displaystyle \sum_{j \in \mathbb{PM}} \boldsymbol{L}_{i-j}(t) \right ) }{\mathrm{d} t} = \dfrac{\mathrm{d} \boldsymbol{L}_i(t) }{\mathrm{d} t} $$
+\end{proof}
+
+\begin{theorem}
+\textbf{Conservation Of Total Angular Momentum}: In a physical space of $\left | \mathbb{PM} \right | = n$, if the total torque exerted on all point masses is $\boldsymbol{0}$, which $\displaystyle\sum_{i \in \mathbb{PM}}\boldsymbol{\tau}_{i}=\boldsymbol{0}$, then the total angular momentum is conserved, which $$ \sum_{i \in \mathbb{PM}} \boldsymbol{L}_{i}(t_F)- \sum_{i \in \mathbb{PM}} \boldsymbol{L}_{i}(t_I) = \boldsymbol{0} $$
+\end{theorem}
+
+\begin{proof}
+
+Apply \textbf{Newton's 2nd Law For Torque},
+
+$$ \sum_{i \in \mathbb{PM}} \boldsymbol{\tau}_i(t)=\boldsymbol{0} \implies \sum_{i \in \mathbb{PM}} \boldsymbol{\tau}_i(t)= \sum_{i \in \mathbb{PM}} \left(\dfrac{\mathrm{d} \boldsymbol{L}_i(t)}{\mathrm{d} t}\right)= \dfrac{\displaystyle \mathrm{d}\left( \sum_{i \in \mathbb{PM}} \boldsymbol{L}_i(t)\right)}{\mathrm{d} t} =\boldsymbol{0} $$
+
+$$ \dfrac{\displaystyle\mathrm{d}\left( \sum_{i \in \mathbb{PM}} \boldsymbol{L}_i(t)\right)}{\mathrm{d} t}=\boldsymbol{0} \implies \int_{t_I}^{t_F} \dfrac{\displaystyle \mathrm{d}\left( \sum_{i \in \mathbb{PM}} \boldsymbol{L}_i(t)\right)}{\mathrm{d} t} \ \mathrm{d} t = \int_{t_I}^{t_F} \boldsymbol{0} \ \mathrm{d} t \implies \sum_{i \in \mathbb{PM}} \left( \int_{\boldsymbol{L}_{i}(t_I)}^{\boldsymbol{L}_{i}(t_F)} \mathrm{d} \left( \boldsymbol{L}_i (t)\right) \right) = \boldsymbol{0} $$
+
+$$ \implies \sum_{i \in \mathbb{PM}} \boldsymbol{L}_{i}(t_F)- \sum_{i \in \mathbb{PM}} \boldsymbol{L}_{i}(t_I) = \boldsymbol{0} $$
+
+\end{proof}
+
+\begin{definition}
+    \textbf{Kinetic Energy}: In a physical space of $\left | \mathbb{PM} \right | = n$, the kinetic energy of a point mass $i$ is denoted as $$ K_i (t, \vec{v}_i) := \dfrac{1}{2} m_i (t) \left \| \vec{v}_i \right \|^2 $$
+\end{definition}
+
+\begin{definition}
+    \textbf{Total Kinetic Energy}: In a physical space of $\left | \mathbb{PM} \right | = n$, the total kinetic energy is denoted as $$K \left ( t, \vec{v}_\mathbb{PM} \right ) := \sum_{i \in \mathbb{PM}}  K_i(t, \vec{v}_i) $$
+\end{definition}
+
+\begin{definition}
+    \textbf{Potential Energy}: In a physical space of $\left | \mathbb{PM} \right | = n$, the potential energy of any point mass $i$ is a function $$  U_i \left ( t, \vec{q}_i \right ) \in \mathbb{R} $$
+\end{definition}
+
+\begin{definition}
+    \textbf{Total Potential Energy}: In a physical space of $\left | \mathbb{PM} \right | = n$, the total potential energy is denoted as $$U\left ( t, \vec{q}_\mathbb{PM} \right ) := \sum_{i \in \mathbb{PM}}  U_i \left ( t, \vec{q}_i \right )  $$
+\end{definition}
+
+\begin{definition}
+    \textbf{Mechanical Energy}: In a physical space of $\left | \mathbb{PM} \right | = n$, the mechanical energy of any point mass $i$ is a function $$E_i(t, \vec{q}_i, \vec{v}_i) := K_i (t, \vec{v}_i) +  U_i \left ( t, \vec{q}_i \right )$$
+\end{definition}
+
+\begin{definition}
+    \textbf{Total Mechanical Energy}: In a physical space of $\left | \mathbb{PM} \right | = n$, the mechanical energy of any point mass $i$ is a function $$E(t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM}) := \sum_{i \in \mathbb{PM}} E_i(t, \vec{q}_i, \vec{v}_i)$$
+\end{definition}
+
+\begin{definition}
+    \textbf{Potential System}: In a physical space of $\left | \mathbb{PM} \right | = n$, the potential system is a system that satisfies $$\forall \  i \in \mathbb{PM}, \quad \vec{F}_i (t) = - \nabla U_i \left ( t, \vec{q}_i  \right) + \vec{\mathcal{F}}_i(t) $$ where $ \nabla  U_i \left ( t, \vec{q}_i \right )  = \left < 0, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial x_i}, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial y_i}, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial z_i} \right >, \quad \vec{\mathcal{F}}_i \in \mathbb{R}^4 $
+\end{definition}
+
+
+\begin{definition}
+    \textbf{Non-Conservative System}: In a physical space of $\left | \mathbb{PM} \right | = n$, the non-conservative system is the potential system with the non-conservative force $\vec{\mathcal{F}}_i$, which $$\forall \  i \in \mathbb{PM}, \quad \vec{F}_i (t) = - \nabla U_i \left ( t, \vec{q}_i  \right) + \vec{\mathcal{F}}_i(t) $$ where $ \nabla  U_i \left ( t, \vec{q}_i \right )  = \left < 0, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial x_i}, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial y_i}, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial z_i} \right >, \quad \vec{\mathcal{F}}_i (t) \ne \vec{0} $
+\end{definition}
+
+\begin{definition}
+    \textbf{Conservative System}: In a physical space of $\left | \mathbb{PM} \right | = n$, the conservative system is the potential system with conservative force only, which $$\forall \  i \in \mathbb{PM}, \quad \vec{F}_i (t) = - \nabla U_i \left ( t, \vec{q}_i  \right) + \vec{\mathcal{F}}_i(t)$$ where $  \nabla  U_i \left ( t, \vec{q}_i \right )  = \left < 0, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial x_i}, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial y_i}, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial z_i} \right >, \quad \vec{\mathcal{F}}_i (t) \ne \vec{0}$
+\end{definition}
+
+\begin{definition}
+    \textbf{Explicit Time Invariance}: In a physical space of $\left | \mathbb{PM} \right | = n$, a potential energy has time invariance which it satisfies $$\forall \  t_c \in \mathbb{R}, \quad  \sum_{i \in \mathbb{PM}}   U_i \left ( t+t_c, \vec{q}_i \right ) - \sum_{i \in \mathbb{PM}}   U_i \left ( t, \vec{q}_i \right )  = 0 $$
+\end{definition}
+
+\begin{definition}
+    \textbf{Explicit Translational Invariance}: In a physical space of $\left | \mathbb{PM} \right | = n$, a potential energy has translational invariance which it satisfies $$\forall \  \vec{q}_c \in \mathbb{R}^3, \quad  \sum_{i \in \mathbb{PM}}   U_i \left ( t, \vec{q}_i + \vec{q}_c \right ) - \sum_{i \in \mathbb{PM}}   U_i \left ( t, \vec{q}_i \right ) = 0 $$
+\end{definition}
+
+\begin{theorem}
+    \textbf{Conservation Of Total Mechanical Energy}: In a physical space of $\left | \mathbb{PM} \right | = n$, for any conservative system with the potential energy having explicit time invariance, the total mechanical energy is conserved, which $$ E(t_F) -  E(t_I) = 0 $$
+\end{theorem}
+
+\begin{proof}
+Apply \textbf{Total Mechanical Energy}, \textbf{Total Kinetic Energy}, \textbf{Total Potential Energy}, \textbf{Kinetic Energy} and \textbf{Potential Energy},
+
+\begin{align*}
+\dfrac{\mathrm{d} E(t)}{\mathrm{d} t} 
+&= \dfrac{\mathrm{d}}{\mathrm{d} t} \left( K (t, \vec{v}_\mathbb{PM}) + U  (t, \vec{q}_\mathbb{PM}) \right) = \dfrac{\mathrm{d}}{\mathrm{d} t} \left( \displaystyle\sum_{i \in \mathbb{PM}}\left(\dfrac{1}{2}  m_i (t) \left \| \vec{v}_i (t) \right \|^2 \right) + U  (t, \vec{q}_\mathbb{PM}) \right) \\ 
+&= \dfrac{\mathrm{d}}{\mathrm{d} t} \left( \displaystyle\sum_{i \in \mathbb{PM}} \left( \dfrac{1}{2} m_i (t) \left \| \vec{v}_i (t) \right \|^2 \right) \right) + \dfrac{\mathrm{d} U  (t, \vec{q}_\mathbb{PM})}{\mathrm{d} t} \\ 
+&= \displaystyle\sum_{i \in \mathbb{PM}}\left( \dfrac{\mathrm{d}}{\mathrm{d} t} \left( \dfrac{1}{2} m_i (t) \left \| \vec{v}_i (t) \right \|^2 \right) \right) \\
+& \quad \ + \left ( \dfrac{\partial U  (t, \vec{q}_\mathbb{PM})}{\partial t} + \displaystyle \sum_{i \in \mathbb{PM}} \left ( \dfrac{\partial U  (t, \vec{q}_\mathbb{PM})}{\partial x_i}\dfrac{\mathrm{d} x_i(t)}{\mathrm{d} t} + \dfrac{\partial U  (t, \vec{q}_\mathbb{PM})}{\partial y_i}\dfrac{\mathrm{d} y_i(t)}{\mathrm{d} t} + \dfrac{\partial U  (t, \vec{q}_\mathbb{PM})}{\partial z_i}\dfrac{\mathrm{d} z_i(t)}{\mathrm{d} t} \right ) \right ) \\ 
+&= \dfrac{1}{2} \displaystyle\sum_{i \in \mathbb{PM}}\left( m_i (t) \dfrac{\mathrm{d}}{\mathrm{d} t} \left( \vec{v}_i (t) \cdot \vec{v}_i (t) \right) \right)\\
+& \quad \ + \left ( \dfrac{\partial U  (t, \vec{q}_\mathbb{PM})}{\partial t} + \displaystyle \sum_{i \in \mathbb{PM}} \left ( 0 \dfrac{\mathrm{d} t}{\mathrm{d} t} +\dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial x_i}\dfrac{\mathrm{d} x_i(t)}{\mathrm{d} t} + \dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial y_i}\dfrac{\mathrm{d} y_i(t)}{\mathrm{d} t} + \dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial z_i}\dfrac{\mathrm{d} z_i(t)}{\mathrm{d} t} \right ) \right )
+\end{align*}
+Apply \textbf{Total Potential Energy},
+\begin{align*}
+&= \dfrac{1}{2}\displaystyle\sum_{i \in \mathbb{PM}}\left( m_i (t) \left ( \vec{v}_i \cdot \dfrac{\mathrm{d} \vec{v}_i (t)}{\mathrm{d} t} + \dfrac{\mathrm{d} \vec{v}_i (t)}{\mathrm{d} t} \cdot \vec{v}_i\right) \right )\\
+& \quad \ + \lim_{t_c \to 0} \left ( \dfrac{ \displaystyle \sum_{i \in \mathbb{PM}}  U_i \left ( t+t_c, \vec{q}_i \right ) - \displaystyle \sum_{i \in \mathbb{PM}}  U_i \left ( t, \vec{q}_i \right ) }{t_c} \right ) \\
+& \quad \ +  \displaystyle \sum_{i \in \mathbb{PM}} \left ( \left < 0, \dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial x_i},\dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial y_i}, \dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial z_i} \right > \cdot \left < \dfrac{\mathrm{d} t}{\mathrm{d} t}, \dfrac{\mathrm{d} x_i(t)}{\mathrm{d} t}, \dfrac{\mathrm{d} y_i(t)}{\mathrm{d} t}, \dfrac{\mathrm{d} z_i(t)}{\mathrm{d} t}\right > \right )
+\end{align*}
+Apply \textbf{Explicit Time Invariance} and \textbf{Conservative System},
+\begin{align*}
+&= \dfrac{1}{2}\displaystyle\sum_{i \in \mathbb{PM}}\left( m_i (t) \left ( \vec{v}_i (t) \cdot \vec{a}_i (t) + \vec{a}_i (t) \cdot \vec{v}_i (t)\right) \right ) + \lim_{t_c \to 0} \left ( \dfrac{ 0 }{t_c} \right ) +  \displaystyle \sum_{i \in \mathbb{PM}} \left ( \nabla U_i \left ( t, \vec{q}_i \right )  \cdot \vec{v}_i (t) \right ) \\
+&= \dfrac{1}{2}\displaystyle\sum_{i \in \mathbb{PM}}\left( m_i (t) \left ( 2 \vec{v}_i (t) \cdot \vec{a}_i (t)\right) \right ) + \lim_{t_c \to 0} \left (0 \right ) +  \displaystyle \sum_{i \in \mathbb{PM}} \left ( \vec{v}_i (t) \cdot \nabla U_i \left ( t, \vec{q}_i \right )  \right ) \\
+&= \displaystyle\sum_{i \in \mathbb{PM}}\left( \vec{v}_i (t) \cdot m_i (t) \vec{a}_i (t) \right) + 0+\displaystyle \sum_{i \in \mathbb{PM}} \left ( \vec{v}_i (t) \cdot \nabla U_i \left ( t, \vec{q}_i \right )  \right ) = \displaystyle\sum_{i \in \mathbb{PM}}\left( \vec{v}_i (t) \cdot \vec{F}_i (t) \right) + \displaystyle \sum_{i \in \mathbb{PM}} \left ( \vec{v}_i (t) \cdot \nabla U_i \left ( t, \vec{q}_i \right )  \right ) \\ 
+&= \displaystyle\sum_{i \in \mathbb{PM}}\left( \vec{v}_i (t) \cdot \vec{F}_i (t) + \vec{v}_i (t) \cdot \nabla U_i \left ( t, \vec{q}_i \right )  \right) = \displaystyle\sum_{i \in \mathbb{PM}}\left( \vec{v}_i (t) \cdot \left ( \vec{F}_i (t) + \nabla U_i \left ( t, \vec{q}_i \right )  \right ) \right) \\
+&= \displaystyle\sum_{i \in \mathbb{PM}}\left( \vec{v}_i (t) \cdot \left (- \nabla U_i \left ( t, \vec{q}_i \right )  + \nabla U_i \left ( t, \vec{q}_i \right )  \right ) \right) = \displaystyle\sum_{i \in \mathbb{PM}}\left( \vec{v}_i (t) \cdot \vec{0} \right) = \displaystyle\sum_{i \in \mathbb{PM}} 0 = 0\\
+\end{align*}
+$$\implies \dfrac{\mathrm{d} E}{\mathrm{d} t} = 0 \implies \int^{t_F}_{t_I} \left( \dfrac{\mathrm{d} E}{\mathrm{d} t} \right ) \mathrm{d} t = \int^{t_F}_{t_I} \left( 0 \right ) $$
+\begin{align*}\implies  E(t_F) -  E(t_I) = 0 \end{align*}
+
+\end{proof}
+
+\begin{theorem}
+    \textbf{Conservation Of Total Linear Momentum}: In a physical space of $\left | \mathbb{PM} \right | = n$, for any conservative system with the potential energy having explicit translational invariance, the total linear momentum is conserved, which $$ \vec{p}(t_F) - \vec{p}(t_I)  = \vec{0} $$
+\end{theorem}
+
+\begin{proof}
+    Apply \textbf{Conservative System},
+    \begin{align*}\displaystyle \sum_{i \in \mathbb{PM}} \vec{F}_i (t) = \displaystyle \sum_{i \in \mathbb{PM}} \left ( - \nabla  U_i \left ( t, \vec{q}_{i} \right ) \right ) &= - \displaystyle \sum_{i \in \mathbb{PM}} \left ( \left < 0, \dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial x_i}, \dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial y_i}, \dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial z_i} \right > \right ) \\ &= - \displaystyle \sum_{i \in \mathbb{PM}} \left ( \left < 0, \dfrac{\partial U  (t, \vec{q}_\mathbb{PM})}{\partial x_i}, \dfrac{\partial U  (t, \vec{q}_\mathbb{PM})}{\partial y_i}, \dfrac{\partial U  (t, \vec{q}_\mathbb{PM})}{\partial z_i} \right > \right ) \end{align*}
+     $$ = - \displaystyle \sum_{i \in \mathbb{PM}} \left( \begin{array}{c}
+0 \\
+\displaystyle \lim_{\vec{q}_c^{[\vec{e}_x]} \to 0} \left( \dfrac{\displaystyle \sum_{i \in \mathbb{PM}}  U_i(t, x_i+\vec{q}_c^{[\vec{e}_x]}, y_i, z_i)  - \displaystyle \sum_{i \in \mathbb{PM}}  U_i(t, x_i, y_i, z_i) }{\vec{q}_c^{[\vec{e}_x]}} \right) \\
+\displaystyle \lim_{\vec{q}_c^{[\vec{e}_y]} \to 0} \left( \dfrac{\displaystyle \sum_{i \in \mathbb{PM}}  U_i(t, x_i, y_i+\vec{q}_c^{[\vec{e}_y]}, z_i) - \displaystyle \sum_{i \in \mathbb{PM}}  U_i(t, x_i, y_i, z_i) }{\vec{q}_c^{[\vec{e}_y]}} \right) \\
+\displaystyle \lim_{\vec{q}_c^{[\vec{e}_z]} \to 0} \left( \dfrac{\displaystyle \sum_{i \in \mathbb{PM}} U_i(t, x_i, y_i, z_i+\vec{q}_c^{[\vec{e}_z]}) - \displaystyle \sum_{i \in \mathbb{PM}} U_i(t, x_i, y_i, z_i)}{\vec{q}_c^{[\vec{e}_z]}} \right)
+\end{array} \right) $$
+Apply \textbf{Explicit Translational Invariance},
+$$ = - \displaystyle \sum_{i \in \mathbb{PM}} \left( \begin{array}{c}
+0 \\
+\displaystyle \lim_{\vec{q}_c^{[\vec{e}_x]} \to 0} \left( \dfrac{0}{\vec{q}_c^{[\vec{e}_x]}} \right) \\
+\displaystyle \lim_{\vec{q}_c^{[\vec{e}_y]} \to 0} \left( \dfrac{0}{\vec{q}_c^{[\vec{e}_y]}} \right) \\
+\displaystyle \lim_{\vec{q}_c^{[\vec{e}_z]} \to 0} \left( \dfrac{0}{\vec{q}_c^{[\vec{e}_z]}} \right)
+\end{array} \right) = - \displaystyle \sum_{i \in \mathbb{PM}} \left( \begin{array}{c}
+0 \\
+\displaystyle \lim_{\vec{q}_c^{[\vec{e}_x]} \to 0} \left( 0 \right) \\
+\displaystyle \lim_{\vec{q}_c^{[\vec{e}_y]} \to 0} \left( 0 \right) \\
+\displaystyle \lim_{\vec{q}_c^{[\vec{e}_z]} \to 0} \left( 0 \right)
+\end{array} \right) = - \displaystyle \sum_{i \in \mathbb{PM}} \left( \begin{array}{c}
+0 \\
+0 \\
+0 \\
+0
+\end{array} \right) = \vec{0} $$
+Apply \textbf{Conservation Of Total Linear Momentum (0)} and \textbf{Total Linear Momentum},
+$$\displaystyle \sum_{i \in \mathbb{PM}} \vec{F}_i (t) = \vec{0} \implies \vec{p}(t_F) - \vec{p}(t_I)  = \vec{0}$$
+
+\end{proof}
+
+\begin{definition}
+    \textbf{Lagrangian}: Lagrangian $\mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})$ is defined as $$ \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM}) := K \left ( t, \vec{v}_\mathbb{PM} \right ) -  U \left ( t, \vec{q}_\mathbb{PM} \right ) $$
+\end{definition}
+
+\begin{theorem}
+    \textbf{Generalized Euler-Lagrange Equations}: In a physical space of $\left | \mathbb{PM} \right | = n$, the potential system is equivalent to 
+    $$
+    \dfrac{\mathrm{d}}{\mathrm{d}  t} \left ( \dfrac{\partial \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{v}^{[a]}_i}  \right ) - \dfrac{\partial \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{q}^{[a]}_i} = \vec{\mathcal{F}}^{[a]}_i (t)
+    $$
+    where $a \in \{ \vec{e}_x, \vec{e}_y, \vec{e}_z \}$
+\end{theorem}
+
+\begin{proof}
+Apply \textbf{Lagrangian},
+\begin{align*}
+& \quad \ \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{v}^{[a]}_i}  \right ) - \dfrac{\partial \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{q}^{[a]}_i}\\
+&= \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial (K\left ( t, \vec{v}_\mathbb{PM} \right ) - U\left ( t, \vec{q}_\mathbb{PM} \right ))}{\partial \vec{v}^{[a]}_i}  \right ) - \dfrac{\partial (K\left ( t, \vec{v}_\mathbb{PM} \right )-U\left ( t, \vec{q}_\mathbb{PM} \right ))}{\partial \vec{q}^{[a]}_i} \\
+& = \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial K \left ( t, \vec{v}_\mathbb{PM} \right )}{\partial \vec{v}^{[a]}_i} - \dfrac{\partial U\left ( t, \vec{q}_\mathbb{PM} \right )}{\partial \vec{v}^{[a]}_i}  \right ) - \left ( \dfrac{\partial K\left ( t, \vec{v}_\mathbb{PM} \right )}{\partial \vec{q}^{[a]}_i} - \dfrac{\partial U\left ( t, \vec{q}_\mathbb{PM} \right )}{\partial \vec{q}^{[a]}_i} \right )
+\end{align*}
+Apply \textbf{Total Kinetic Energy} and \textbf{Total Potential Energy},
+\begin{align*}
+& = \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial \left (\displaystyle \sum_{i \in \mathbb{PM}} K_i (t, \vec{v}_i) \right )}{\partial \vec{v}^{[a]}_i} - \dfrac{\partial \left ( \displaystyle \sum_{i \in \mathbb{PM}} U_i \left ( t, \vec{q}_i \right )\right )}{\partial \vec{v}^{[a]}_i}  \right ) - \left ( \dfrac{\partial \left ( \displaystyle \sum_{i \in \mathbb{PM}} K_i (t, \vec{v}_i) \right )}{\partial \vec{q}^{[a]}_i} - \dfrac{\partial \left ( \displaystyle \sum_{i \in \mathbb{PM}} U_i \left ( t, \vec{q}_i \right ) \right )}{\partial \vec{q}^{[a]}_i} \right )\\
+& = \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial K_i (t, \vec{v}_i) }{\partial \vec{v}^{[a]}_i} - \dfrac{\partial U_i \left ( t, \vec{q}_i \right )}{\partial \vec{v}^{[a]}_i}  \right ) - \left ( \dfrac{\partial K_i (t, \vec{v}_i)}{\partial \vec{q}^{[a]}_i} - \dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial \vec{q}^{[a]}_i} \right )\\
+& = \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial K_i (t, \vec{v}_i)}{\partial \vec{v}^{[a]}_i} - 0 \right ) - \left ( 0 - \dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial \vec{q}^{[a]}_i} \right ) = - \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial K_i (t, \vec{v}_i)}{\partial \vec{v}^{[a]}_i} \right ) - \left ( - \dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial \vec{q}^{[a]}_i} \right ) \\
+& = \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial K_i (t, \vec{v}_i)}{\partial \vec{v}^{[a]}_i} \right ) - \left ( - \nabla U_i \left ( t, \vec{q}_i \right ) \right )^{[a]}
+\end{align*}
+Apply \textbf{Potential System} and \textbf{Kinetic Energy},
+\begin{align*}
+& = \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial \left ( \dfrac{1}{2} m_i (t) \left ( (\vec{v}_i^{[\vec{e}_{x}]}(t))^2+ (\vec{v}_i^{[\vec{e}_{y}]}(t))^2+ (\vec{v}_i^{[\vec{e}_{z}]}(t))^2 \right ) \right )}{\partial \vec{v}^{[a]}_i}  \right ) - \left (\vec{F}_i (t) - \vec{\mathcal{F}}_i (t) \right )^{[a]}  \\
+& = \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\mathrm{d} \left ( \dfrac{1}{2} m_i (t) (\vec{v}_i^{[a]} (t))^2 \right )}{\mathrm{d} \vec{v}_i^{[a]}}  \right ) - \left (\vec{F}^{[a]}_i (t) - \vec{\mathcal{F}}^{[a]}_i (t)\right ) = \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{1}{2} m_i (t) \dfrac{\mathrm{d} \left ( (\vec{v}_i^{[a]} (t))^2 \right )}{\mathrm{d} \vec{v}_i^{[a]}}  \right ) - \vec{F}^{[a]}_i (t) + \vec{\mathcal{F}}^{[a]}_i (t)  \\
+& = \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{1}{2} m_i (t) \left ( 2 \vec{v}_i^{[a]}(t) \right )  \right ) - \vec{F}^{[a]}_i (t) + \vec{\mathcal{F}}^{[a]}_i (t)= \dfrac{\mathrm{d}}{\mathrm{d} t} \left (  m_i (t)  \vec{v}_i^{[a]}(t) \right ) - \vec{F}^{[a]}_i (t) + \vec{\mathcal{F}}^{[a]}_i (t)  \\
+& = \left ( \dfrac{\mathrm{d}}{\mathrm{d} t} \left (  m_i (t)  \vec{v}_i (t) \right ) \right )^{[a]} - \vec{F}^{[a]}_i (t) + \vec{\mathcal{F}}^{[a]}_i (t)  \\
+    \end{align*}
+Apply \textbf{Linear Momentum (1)} and \textbf{Newton's 2nd Law},
+    \begin{align*}
+& = \left ( \dfrac{\mathrm{d} \vec{p}_i (t)}{\mathrm{d} t} \right )^{[a]} - \vec{F}^{[a]}_i (t) + \vec{\mathcal{F}}^{[a]}_i (t) = \vec{F}_i^{[a]} (t) - \vec{F}^{[a]}_i (t) + \vec{\mathcal{F}}^{[a]}_i (t) = \vec{\mathcal{F}}^{[a]}_i (t) \\
+    \end{align*}
+    $$\Longleftrightarrow  \dfrac{\mathrm{d}}{\mathrm{d}  t} \left ( \dfrac{\partial \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{v}^{[a]}_i}  \right ) - \dfrac{\partial \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{q}^{[a]}_i } = \vec{\mathcal{F}}^{[a]}_i (t)$$
+\end{proof}
+
+
+\begin{theorem}
+    \textbf{Euler-Lagrange Equations}: In a physical space of $\left | \mathbb{PM} \right | = n$, the conservative system is equivalent to 
+    $$
+    \dfrac{\mathrm{d}}{\mathrm{d}  t} \left ( \dfrac{\partial \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{v}^{[a]}_i}  \right ) - \dfrac{\partial \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{q}^{[a]}_i} = 0
+    $$
+    where $a \in \{ \vec{e}_x, \vec{e}_y, \vec{e}_z \}$
+\end{theorem}
+
+\begin{proof}
+    Apply \textbf{Generalized Euler-Lagrange Equations} and \textbf{Conservative System},
+    $$\Longleftrightarrow \dfrac{\mathrm{d}}{\mathrm{d}  t} \left ( \dfrac{\partial \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{v}^{[a]}_i}  \right ) - \dfrac{\partial \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{q}^{[a]}_i } = \vec{\mathcal{F}}^{[a]}_i (t) = 0$$
+\end{proof}
+
+
+
+\newpage
+
+\section{Conclusion}
+
+The formalization of classical mechanics presented in this work seeks to address the long-standing ambiguities and lack of mathematical rigor identified by thinkers such as Poincaré, Kirchhoff, Mach, and Hertz. By adopting a Bourbaki-style axiomatic approach, we have systematically reconstructed the foundational principles of classical mechanics within a self-consistent mathematical framework. This approach ensures that every concept--ranging from fundamental notions like mass, force, and acceleration to the derivation of Newton's laws and conservation principles--is rigorously defined and logically derived.
+
+Through the axiomatic system, this paper has clarified cyclic definitions and resolved inherent ambiguities, such as the interdependence of force and mass. The explicit definitions, axioms, and theorems presented herein not only provide a foundation for classical mechanics as a purely mathematical discipline but also demonstrate its consistency with the principles of modern formalism. Importantly, this work highlights how the axiomatic method can illuminate classical mechanics' core assumptions and dependencies, fostering a deeper understanding of its logical structure.
+
+The development of this formalism has been inspired and informed by several foundational works in classical mechanics and its mathematical formalization. Texts such as Holm, Schmah, and Stoica's Geometric Mechanics and Symmetry~\cite{holm2009geometric}, Marsden and Ratiu's Introduction to Mechanics and Symmetry~\cite{marsden1999introduction}, Arnold's Mathematical Methods of Classical Mechanics~\cite{arnold1989mathematical}, and Landau and Lifshitz's Mechanics~\cite{landau1976mechanics} have provided valuable insights into the geometric, analytical, and physical underpinnings of classical mechanics. These works have shaped the theoretical perspectives adopted in this paper and served as key references in refining the axiomatic framework presented herein.
+
+While significant progress has been made, we acknowledge that this paper represents only a partial response to Hilbert's sixth problem. Classical mechanics, though foundational, is just one domain of physics requiring formalization. Extending this approach to encompass more complex systems, including those involving statistical mechanics, quantum mechanics, or relativistic effects, remains an essential avenue for future research. Additionally, while this work prioritizes mathematical precision over physical intuition, bridging the gap between these two perspectives remains a critical challenge for the broader physics community.
+
+We hope that the framework developed here serves as a stepping stone toward a more rigorous understanding of classical mechanics and inspires further efforts to axiomatize other areas of physics. By grounding the discipline in a robust mathematical foundation, we aim to honor the vision of Hilbert and other pioneers who sought to elevate physics to the same level of rigor as pure mathematics. In closing, this paper reaffirms the importance of formalism not as an abstract exercise but as a practical tool for uncovering the underlying structures of physical theories. It is our belief that the continued pursuit of rigor and precision will not only clarify the foundations of mechanics but also contribute to the advancement of physics as a whole.
+
+
+\newpage
+\appendix
+
+\section{Notation and Axioms}
+
+This appendix outlines the notations, symbols, and axioms utilized in this paper. All mathematical reasoning assumes the Zermelo-Fraenkel set theory with the Axiom of Choice (ZFC) as the foundational framework. Additionally, we employ standard modern mathematical notation except where explicitly stated otherwise. This section also highlights custom notations introduced in this work and provides clarification for specific conventions.
+
+\subsection{Custom Notations}
+
+\textbf{Vector Coefficient Extraction Notation}  
+   For any vector $\vec{v}$ expressed in a basis $\{\vec{e}_1, \vec{e}_2, \vec{e}_3, \cdots\}$, let $\vec{v} = a\vec{e}_1 + b\vec{e}_2 + c\vec{e}_3 + \cdots$, where $a, b, c, \cdots$ are the coefficients associated with the basis vectors. We define the notation $\vec{v}^{[\vec{e}_i]}$ to represent the coefficient of $\vec{e}_i$. For example, if
+   $$
+   \vec{v} = a \vec{e}_1 + b \vec{e}_2 + c \vec{e}_3
+   $$
+   then
+   $$
+   \vec{v}^{[\vec{e}_2]} = b
+   $$
+   This notation simplifies the extraction of specific components in computations and proofs.
+
+\textbf{Ordinary Derivative and Function Reduction Notation}  
+   Consider a differentiable function $f: \mathbb{R}^N \to \mathbb{R}$. The classical formula for the ordinary (total) derivative is:
+   $$
+   \dfrac{\mathrm{d} f}{\mathrm{d} t} = \sum_{i=1}^N \dfrac{\partial f}{\partial x_i} \dfrac{\mathrm{d} x_i}{\mathrm{d} t}
+   $$
+   This notation can be ambiguous since $f$ is not inherently a single-variable function. To resolve this, we interpret the derivative as that of the composite function $z(t) = (f \circ g)(t)$, where $g: \mathbb{R} \to \mathbb{R}^N$ is defined by $g(t) = [x_1(t), \dots, x_N(t)]^\top$. Thus, the ordinary derivative is more precisely expressed as:
+   $$
+   \dfrac{\mathrm{d} z}{\mathrm{d} t} = \sum_{i=1}^N \dfrac{\partial f}{\partial x_i} \dfrac{\mathrm{d} x_i}{\mathrm{d} t}
+   $$
+   In this paper, we adhere to the convention of using $f$ to denote the composite function $z$, avoiding the introduction of new functions like $z$ and $g$. When we write $\dfrac{\mathrm{d} f}{\mathrm{d} t}$, it is implicitly understood that $f$ is composed with time-dependent variables $g(t)$. To highlight this dependency, we denote the function as $f(t)$. For instance, if $f(x, y)$ is a function of two variables, then $f(t)$ refers to $f(x(t), y(t))$, where $x = x(t)$ and $y = y(t)$.
+
+   This convention extends naturally to the simplification of multi-variable functions with time-dependent arguments. For example, if a function $E: \mathbb{R} \times (\mathbb{R}^4)^2 \to \mathbb{R}$ is defined, such as the total mechanical energy $E(t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})$, we automatically define a reduced function $E: \mathbb{R} \to \mathbb{R}$ by substituting time-dependent variables into $E$:
+   $$
+   E(t) := E(t, \vec{q}_\mathbb{PM}(t), \vec{v}_\mathbb{PM}(t))
+   $$
+   The reduced function $E(t)$ has the type $\mathbb{R} \to \mathbb{R}$ and is employed to streamline expressions and computations. By treating time-dependent arguments as implicit, we maintain consistency with the ordinary derivative convention. Therefore, when $E(t)$ is written instead of $E(t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})$, it is understood that $\vec{q}_\mathbb{PM}$ and $\vec{v}_\mathbb{PM}$ depend on $t$.
+
+   This approach avoids introducing additional symbols, such as $z(t)$, enhancing the readability of expressions. It ensures that complex multi-variable functions are expressed compactly while preserving their underlying meaning, applicable not only in the context of derivatives but also in general usage.
+   
+\subsection{Conventions for Equality and Inequality}
+
+In this paper, we adopt the following conventions for interpreting equality and inequality:
+
+\textbf{Equality ($=$)}: Unless explicitly specified otherwise, equality is interpreted as a universal statement for $t \in \mathbb{R}$. This means that the equality holds for all values of the relevant variables within their defined domain. For example:
+    \begin{theorem*}
+     \textbf{Newton's 2nd Law}: In a physical space of $\left | \mathbb{PM} \right | = n$, $$ \vec{F}_{i}(t) = \dfrac{\mathrm{d} \vec{p}_{i}(t)}{\mathrm{d} t} $$
+    \end{theorem*}
+   In Newton's second law, the relationship $\vec{F}_i(t) = \dfrac{\mathrm{d} \vec{p}_i(t)}{\mathrm{d} t}$
+   holds universally for all $t \in \mathbb{R}$. This indicates that the force $\vec{F}_i(t)$ is equal to the time derivative of the momentum $\vec{p}_i(t)$ at every point in time.
+
+\textbf{Inequality ($\neq$)}: Unless explicitly specified otherwise, inequality is interpreted as an existential statement for $t \in \mathbb{R}$. This means there exists at least one value in the relevant domain for which the inequality holds. For instance, consider the definition of a non-conservative system:
+   \begin{definition*}
+    \textbf{Non-Conservative System}: In a physical space of $\left | \mathbb{PM} \right | = n$, the non-conservative system is the potential system with the non-conservative force $\vec{\mathcal{F}}_i$, which $$\forall \  i \in \mathbb{PM}, \quad \vec{F}_i (t) = - \nabla U_i \left ( t, \vec{q}_i  \right) + \vec{\mathcal{F}}_i(t) $$ where $ \nabla  U_i \left ( t, \vec{q}_i \right )  = \left < 0, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial x_i}, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial y_i}, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial z_i} \right >, \quad \vec{\mathcal{F}}_i (t) \ne \vec{0} $
+\end{definition*}
+   Here, the condition $\vec{\mathcal{F}}_i(t) \neq \vec{0}$ implies the existence of at least one $t \in \mathbb{R}$ such that $\vec{\mathcal{F}}_i(t) \neq \vec{0}$.
+
+Explicit statements are included when necessary to distinguish between universal and existential interpretations in contexts where these conventions might be ambiguous. This ensures precision in the presentation of definitions and theorems while allowing for the natural and implicit use of conventions where appropriate.
+
+\subsection{Axioms}
+
+In addition to the axioms explicitly introduced in this paper for the formalization of classical mechanics, we implicitly assume the Zermelo-Fraenkel set theory with the Axiom of Choice (ZFC) as the foundational framework for all mathematical reasoning. The ZFC axioms provide the standard basis for modern mathematics and ensure the logical consistency of the constructs and results presented in this work.
+
+\newpage
+\bibliographystyle{amsplain}
+\bibliography{Formalism_of_Classical_Mechanics}
+
+
+\section*{Author Information}
+\noindent
+\textbf{Yiyang Liu} \\[0.5em]
+\noindent
+\textit{Email:} \href{mailto:Deep0Thinking@outlook.com}{Deep0Thinking@outlook.com} \\[0.25em]
+\noindent
+\textit{Website:} \href{https://deep0thinking.com/}{https://deep0thinking.com/}
+
+
+\end{document}

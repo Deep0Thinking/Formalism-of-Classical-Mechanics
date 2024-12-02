@@ -1,0 +1,49 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{10}
+
+\bibitem{arnold1989mathematical}
+V.~I. Arnold, \emph{Mathematical methods of classical mechanics}, second ed., Springer, New York, 1989.
+
+\bibitem{birkhoff1931}
+George~D. Birkhoff, \emph{Proof of the ergodic theorem}, Proceedings of the National Academy of Sciences \textbf{17} (1931), no.~12, 656--660.
+
+\bibitem{hamel1909}
+Georg Hamel, \emph{Die axiome der mechanik}, Mathematische Annalen \textbf{66} (1909), 350--397.
+
+\bibitem{hertz1899}
+Heinrich Hertz, \emph{The principles of mechanics presented in a new formdd}, Macmillan, London, 1899.
+
+\bibitem{holm2009geometric}
+Darryl~D. Holm, Tanya Schmah, and Cristina Stoica, \emph{Geometric mechanics and symmetry: From finite to infinite dimensions}, Oxford Texts in Applied and Engineering Mathematics, vol.~12, Oxford University Press, Oxford, 2009.
+
+\bibitem{kirchhoff1877}
+Gustav Kirchhoff, \emph{Vorlesungen über mathematische physik: Mechanik}, 2nd ed., B. G. Teubner, Leipzig, 1877.
+
+\bibitem{kolmogorov1950}
+A.~N. Kolmogorov, \emph{Foundations of the theory of probability}, Chelsea Publishing Company, New York, 1950, Originally published in German as \textit{Grundbegriffe der Wahrscheinlichkeitsrechnung} in 1933.
+
+\bibitem{landau1976mechanics}
+L.~D. Landau and E.~M. Lifshitz, \emph{Mechanics: Volume 1}, third ed., Pergamon Press, Oxford, New York, 1976.
+
+\bibitem{mach1893}
+Ernst Mach, \emph{The science of mechanics: A critical and historical account of its development}, 1st ed., Open Court Publishing Company, Chicago, 1893.
+
+\bibitem{marsden1999introduction}
+Jerrold~E. Marsden and Tudor~S. Ratiu, \emph{Introduction to mechanics and symmetry: A basic exposition of classical mechanical systems}, 2nd ed., Texts in Applied Mathematics, vol.~17, Springer, New York, 1999.
+
+\bibitem{norton2008dome}
+John~D. Norton, \emph{The dome: An unexpectedly simple failure of determinism}, Philosophy of Science \textbf{75} (2008), no.~5, 786--798.
+
+\bibitem{poincare1905}
+Henri Poincaré, \emph{Science and hypothesis}, The Contemporary Science Series, Walter Scott Publishing, London, 1905.
+
+\bibitem{vonneumann1932}
+John von Neumann, \emph{Mathematische grundlagen der quantenmechanik}, Springer, Berlin, 1932, Translated into English by Robert T. Beyer as \textit{Mathematical Foundations of Quantum Mechanics}, Princeton University Press, 1955.
+
+\end{thebibliography}
