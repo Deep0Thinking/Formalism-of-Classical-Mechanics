@@ -147,23 +147,23 @@ $$
 
 \begin{definition}
 \textbf{Relative Position}: In a physical space of $\left | \mathbb{PM} \right | = n$, the relative position of a point mass $i$ relative to a point mass $j$ is denoted as
-$$\vec{q}_{i-j} (t) := \left< t, x_{i-j}(t), y_{i-j}(t), z_{i-j}(t) \right> = t\vec{e}_t + x_{i-j}(t) \vec{e}_x + y_{i-j}(t) \vec{e}_y + z_{i-j}(t) \vec{e}_z $$
+$$\vec{r}_{i-j} (t) := \left< t, x_{i-j}(t), y_{i-j}(t), z_{i-j}(t) \right> = t\vec{e}_t + x_{i-j}(t) \vec{e}_x + y_{i-j}(t) \vec{e}_y + z_{i-j}(t) \vec{e}_z $$
 where $t, x_{i-j}(t), y_{i-j}(t), z_{i-j}(t) \in \mathbb{R}$
 \end{definition}
 
 \begin{definition}
 \textbf{Position}: In a physical space of $\left | \mathbb{PM} \right | = n$, the velocity of a point mass $i$ is denoted as
-$$\vec{q}_i(t) :=\displaystyle \sum_{j \in \mathbb{PM}} \vec{q}_{i-j} (t)$$
+$$\vec{r}_i(t) :=\displaystyle \sum_{j \in \mathbb{PM}} \vec{r}_{i-j} (t)$$
 \end{definition}
 
 \begin{axiom}
-\textbf{Position Existence and Uniqueness}: $$\forall \  i \in \mathbb{O}, \quad \exists!\ \vec{q}_i : \mathbb{R} \to \mathbb{R}^4$$
+\textbf{Position Existence and Uniqueness}: $$\forall \  i \in \mathbb{O}, \quad \exists!\ \vec{r}_i : \mathbb{R} \to \mathbb{R}^4$$
 \end{axiom}
 
 \begin{axiom}
 \textbf{Position Smoothness}:
 $$
-\forall \  i \in \mathbb{O}, \quad \vec{q}_i \in C^{\infty}(\mathbb{R})
+\forall \  i \in \mathbb{O}, \quad \vec{r}_i \in C^{\infty}(\mathbb{R})
 $$
 where $C^{\infty}(\mathbb{R})$ denotes the physical space of functions that are infinitely differentiable on $\mathbb{R}$
 
@@ -171,7 +171,7 @@ where $C^{\infty}(\mathbb{R})$ denotes the physical space of functions that are 
 
 \begin{definition}
 \textbf{Relative Velocity}: In a physical space of $\left | \mathbb{PM} \right | = n$, the relative velocity of a point mass $i$ relative to a point mass $j$ is denoted as
-$$\vec{v}_{i-j} (t) := \dfrac{\mathrm{d} \vec{q}_{i-j}(t)}{\mathrm{d} t} $$
+$$\vec{v}_{i-j} (t) := \dfrac{\mathrm{d} \vec{r}_{i-j}(t)}{\mathrm{d} t} $$
 \end{definition}
 
 \begin{definition}
@@ -181,13 +181,13 @@ $$\vec{v}_i(t) := \displaystyle \sum_{j \in \mathbb{PM}} \vec{v}_{i-j} (t)$$
 
 \begin{theorem}
 \textbf{Velocity (1)}: In a physical space of $\left | \mathbb{PM} \right | = n$, the velocity of a point mass $i$ is
-$$\vec{v}_i(t) = \dfrac{\mathrm{d} \vec{q}_{i} (t)}{\mathrm{d} t}$$
+$$\vec{v}_i(t) = \dfrac{\mathrm{d} \vec{r}_{i} (t)}{\mathrm{d} t}$$
 \end{theorem}
 
 \begin{proof}
     Apply \textbf{Velocity (0)}, \textbf{Relative Velocity} and \textbf{Position},
-    $$\vec{v}_i (t) = \sum_{j \in \mathbb{PM}} \vec{v}_{i-j} (t) = \sum_{j \in \mathbb{PM}} \left ( \dfrac{\mathrm{d} \vec{q}_{i-j}(t)}{\mathrm{d} t} \right )= \dfrac{\mathrm{d} \left ( \displaystyle \sum_{j \in \mathbb{PM}} \vec{q}_{i-j}(t) \right )}{\mathrm{d} t} = \dfrac{\mathrm{d} \vec{q}_{i}(t)}{\mathrm{d} t} $$
-    $$\implies \vec{v}_i(t) = \dfrac{\mathrm{d} \vec{q}_{i} (t)}{\mathrm{d} t} $$
+    $$\vec{v}_i (t) = \sum_{j \in \mathbb{PM}} \vec{v}_{i-j} (t) = \sum_{j \in \mathbb{PM}} \left ( \dfrac{\mathrm{d} \vec{r}_{i-j}(t)}{\mathrm{d} t} \right )= \dfrac{\mathrm{d} \left ( \displaystyle \sum_{j \in \mathbb{PM}} \vec{r}_{i-j}(t) \right )}{\mathrm{d} t} = \dfrac{\mathrm{d} \vec{r}_{i}(t)}{\mathrm{d} t} $$
+    $$\implies \vec{v}_i(t) = \dfrac{\mathrm{d} \vec{r}_{i} (t)}{\mathrm{d} t} $$
 \end{proof}
 
 \begin{definition}
@@ -209,15 +209,15 @@ $$\vec{v}_i(t) = \dfrac{\mathrm{d} \vec{q}_{i} (t)}{\mathrm{d} t}$$
 \end{proof}
 
 \begin{theorem}
-\textbf{Acceleration (2)}: In a physical space of $\left | \mathbb{PM} \right | = n$, the velocity of a point mass $i$ is $$\vec{a}_i(t) = \dfrac{\mathrm{d}^2 \vec{q}_{i} (t)}{\mathrm{d} t^2}$$
+\textbf{Acceleration (2)}: In a physical space of $\left | \mathbb{PM} \right | = n$, the velocity of a point mass $i$ is $$\vec{a}_i(t) = \dfrac{\mathrm{d}^2 \vec{r}_{i} (t)}{\mathrm{d} t^2}$$
 \end{theorem}
 
 \begin{proof}
     Apply \textbf{Acceleration (1)}, \textbf{Velocity} and \textbf{Relative Velocity},
     \begin{align*}
-    \vec{a}_i (t) = \dfrac{\mathrm{d} \vec{v}_{i} (t)}{\mathrm{d} t} = \dfrac{\mathrm{d} \left ( \displaystyle \sum_{j \in \mathbb{PM}} \vec{v}_{i-j}(t) \right )}{\mathrm{d} t} = \dfrac{\mathrm{d} \left ( \displaystyle \sum_{j \in \mathbb{PM}} \left ( \dfrac{\mathrm{d} \vec{q}_{i-j}(t)}{\mathrm{d} t} \right ) \right )}{\mathrm{d} t} = \displaystyle \sum_{j \in \mathbb{PM}} \left ( \dfrac{\mathrm{d} }{\mathrm{d} t} \left ( \dfrac{\mathrm{d}  \vec{q}_{i-j}(t) }{\mathrm{d} t} \right ) \right ) = \dfrac{\mathrm{d}^2 \vec{q}_{i} (t)}{\mathrm{d} t^2}
+    \vec{a}_i (t) = \dfrac{\mathrm{d} \vec{v}_{i} (t)}{\mathrm{d} t} = \dfrac{\mathrm{d} \left ( \displaystyle \sum_{j \in \mathbb{PM}} \vec{v}_{i-j}(t) \right )}{\mathrm{d} t} = \dfrac{\mathrm{d} \left ( \displaystyle \sum_{j \in \mathbb{PM}} \left ( \dfrac{\mathrm{d} \vec{r}_{i-j}(t)}{\mathrm{d} t} \right ) \right )}{\mathrm{d} t} = \displaystyle \sum_{j \in \mathbb{PM}} \left ( \dfrac{\mathrm{d} }{\mathrm{d} t} \left ( \dfrac{\mathrm{d}  \vec{r}_{i-j}(t) }{\mathrm{d} t} \right ) \right ) = \dfrac{\mathrm{d}^2 \vec{r}_{i} (t)}{\mathrm{d} t^2}
     \end{align*}
-    $$\implies \vec{a}_i(t) = \dfrac{\mathrm{d}^2 \vec{q}_{i} (t)}{\mathrm{d} t^2} $$
+    $$\implies \vec{a}_i(t) = \dfrac{\mathrm{d}^2 \vec{r}_{i} (t)}{\mathrm{d} t^2} $$
 \end{proof}
 
 \begin{definition}
@@ -248,13 +248,25 @@ $$\vec{v}_i(t) = \dfrac{\mathrm{d} \vec{q}_{i} (t)}{\mathrm{d} t}$$
 \end{definition}
 
 \begin{definition}
-\textbf{Inertial Reference Frame (IRF)}: In a physical space of $\left | \mathbb{PM} \right | = n$, $$  \forall \  i \in \mathbb{PM}, \quad \vec{F}_{i-i}(t)=\vec{0} $$
+\textbf{Inertial Reference Frame (IRF)}: In a physical space of $\left | \mathbb{PM} \right | = n$, $$  \forall \  i \in \mathbb{PM}, \quad \vec{r}_{i-i}(t)=\vec{0} $$
 where $i\ne j$
 \end{definition}
 
 \begin{definition}
-\textbf{Non-Inertial Reference Frame (Non-IRF)}: In a physical space of $\left | \mathbb{PM} \right | = n$,$$\exists \  i \in \mathbb{PM}, \quad \vec{F}_{i-i} (t)\ne \vec{0} $$
+\textbf{Non-Inertial Reference Frame (Non-IRF)}: In a physical space of $\left | \mathbb{PM} \right | = n$,$$\exists \  i \in \mathbb{PM}, \quad \vec{r}_{i-i} (t)\ne \vec{0} $$
 \end{definition}
+
+\begin{theorem}
+ \textbf{Relative Force (IRF)}: In a physical space of $\left | \mathbb{PM} \right | = n$, within IRF, $$ \vec{F}_{i-i}(t) = \vec{0} $$
+\end{theorem}
+
+\begin{proof}
+Apply \textbf{Relative Force}, \textbf{Relative Linear Momentum}, \textbf{Relative Velocity} and \textbf{IRF},
+
+$$ \vec{F}_{i-i}(t) = \dfrac{\mathrm{d} \vec{p}_{i-i} (t)}{\mathrm{d} t} =  \dfrac{\mathrm{d} \left ( m_i (t)\vec{v}_{i-i} (t) \right )}{\mathrm{d} t} = m_i(t) \dfrac{\mathrm{d} }{\mathrm{d} t} \left ( \vec{v}_{i-i}(t) \right ) = m_i(t) \dfrac{\mathrm{d} }{\mathrm{d} t} \left ( \dfrac{\mathrm{d} }{\mathrm{d} t}  \left ( \vec{r}_{i-i}(t) \right ) \right ) = \vec{0}$$
+
+$$ \implies \vec{F}_{i-i}(t) = \vec{0} $$
+\end{proof}
 
 \begin{definition}
 \textbf{Force (0)}: In a physical space of $\left | \mathbb{PM} \right | = n$, the total relative forces from other point masses exerted on a point mass $i$ is denoted as $\vec{F}_{i}(t):= \displaystyle \sum_{j \in \mathbb{PM}} \vec{F}_{i-j}(t) $
@@ -282,12 +294,12 @@ $$ \implies \vec{F}_{i}(t) = \dfrac{\mathrm{d}  \vec{p}_{i} (t)}{\mathrm{d} t} $
 \end{proof}
 
 \begin{theorem}
- \textbf{Force (2)}: In a physical space of $\left | \mathbb{PM} \right | = n$, $$ \vec{F}_{i}(t) = m_i(t) \dfrac{\mathrm{d}^2 \vec{q}_{i} (t)}{\mathrm{d} t^2}$$
+ \textbf{Force (2)}: In a physical space of $\left | \mathbb{PM} \right | = n$, $$ \vec{F}_{i}(t) = m_i(t) \dfrac{\mathrm{d}^2 \vec{r}_{i} (t)}{\mathrm{d} t^2}$$
 \end{theorem}
 
 \begin{proof}
     Apply \textbf{Force (1)} and \textbf{Acceleration (2)},
-    $$ \vec{F}_{i}(t) = m_i(t) \vec{a}_i(t) = m_i(t) \dfrac{\mathrm{d}^2 \vec{q}_{i} (t)}{\mathrm{d} t^2}$$
+    $$ \vec{F}_{i}(t) = m_i(t) \vec{a}_i(t) = m_i(t) \dfrac{\mathrm{d}^2 \vec{r}_{i} (t)}{\mathrm{d} t^2}$$
 \end{proof}
 
 \begin{theorem}
@@ -310,27 +322,27 @@ $$ \implies \vec{F}_{i}(t) = \dfrac{\mathrm{d}  \vec{p}_{i} (t)}{\mathrm{d} t} $
 
 \begin{proposition}
     \textbf{Norton's Dome Problem Is False}: In Norton's dome problem ($\left |\mathbb{PM}\right | = 1$), the conditions of ball $i \in \mathbb{PM}$ are 
-    $$ \vec{F}_i^{[\vec{e}_x]}(t) = m_i(t) \sqrt{\vec{q}_i^{[\vec{e}_x]}(t)} , \quad \vec{v}_i^{[\vec{e}_x]}(0) = 0, \quad \vec{q}_i^{[\vec{e}_x]}(0) = 0$$
+    $$ \vec{F}_i^{[\vec{e}_x]}(t) = m_i(t) \sqrt{\vec{r}_i^{[\vec{e}_x]}(t)} , \quad \vec{v}_i^{[\vec{e}_x]}(0) = 0, \quad \vec{r}_i^{[\vec{e}_x]}(0) = 0$$
     and this proposition is False.\footnote{Norton's Dome is a thought experiment in classical mechanics, proposed by John Norton, which presents a scenario where determinism appears to break down. For details, see \cite{norton2008dome}.}
 \end{proposition}
 
 \begin{proof}
     Apply \textbf{Force (2)},
     \begin{align*}
-    \vec{F}_i^{[\vec{e}_x]}(t) &= m_i(t)\sqrt{\vec{q}_i^{[\vec{e}_x]}(t)} \\
-    \left ( m_i(t) \dfrac{\mathrm{d}^2 \vec{q}_{i} (t)}{\mathrm{d} t^2} \right )^{[\vec{e}_x]} &= m_i(t)\sqrt{\vec{q}_i^{[\vec{e}_x]}(t)}\\
-     m_i(t) \dfrac{\mathrm{d}^2 }{\mathrm{d} t^2} \left ( \vec{q}^{[\vec{e}_x]}_{i} (t) \right ) &= m_i(t)\sqrt{\vec{q}_i^{[\vec{e}_x]}(t)}
+    \vec{F}_i^{[\vec{e}_x]}(t) &= m_i(t)\sqrt{\vec{r}_i^{[\vec{e}_x]}(t)} \\
+    \left ( m_i(t) \dfrac{\mathrm{d}^2 \vec{r}_{i} (t)}{\mathrm{d} t^2} \right )^{[\vec{e}_x]} &= m_i(t)\sqrt{\vec{r}_i^{[\vec{e}_x]}(t)}\\
+     m_i(t) \dfrac{\mathrm{d}^2 }{\mathrm{d} t^2} \left ( \vec{r}^{[\vec{e}_x]}_{i} (t) \right ) &= m_i(t)\sqrt{\vec{r}_i^{[\vec{e}_x]}(t)}
     \end{align*}
     Apply \textbf{Point Mass},
     $$
-    \implies \dfrac{\mathrm{d}^2 }{\mathrm{d} t^2} \left ( \vec{q}^{[\vec{e}_x]}_{i} (t) \right ) = \sqrt{\vec{q}_i^{[\vec{e}_x]}(t)}, \quad \vec{v}_i^{[\vec{e}_x]}(0) = 0, \quad \vec{q}_i^{[\vec{e}_x]}(0) = 0 
+    \implies \dfrac{\mathrm{d}^2 }{\mathrm{d} t^2} \left ( \vec{r}^{[\vec{e}_x]}_{i} (t) \right ) = \sqrt{\vec{r}_i^{[\vec{e}_x]}(t)}, \quad \vec{v}_i^{[\vec{e}_x]}(0) = 0, \quad \vec{r}_i^{[\vec{e}_x]}(0) = 0 
     $$
     $$
-    \implies \vec{q}^{[\vec{e}_x]}_{i}(t) = \begin{cases} 0, & \forall \ t<t_0 \\ \dfrac{1}{144}(t - t_0)^4, & \forall \ t \geq t_0 \end{cases}, \quad \text{where } t_0 \in \mathbb{R}
+    \implies \vec{r}^{[\vec{e}_x]}_{i}(t) = \begin{cases} 0, & \forall \ t<t_0 \\ \dfrac{1}{144}(t - t_0)^4, & \forall \ t \geq t_0 \end{cases}, \quad \text{where } t_0 \in \mathbb{R}
     $$
     
     $$
-    \implies \vec{q}^{[\vec{e}_x]}_{i}(t) \text{ is not unique.} \implies \vec{q}_{i}(t) \text{ is not unique.} 
+    \implies \vec{r}^{[\vec{e}_x]}_{i}(t) \text{ is not unique.} \implies \vec{r}_{i}(t) \text{ is not unique.} 
     $$
     \\
     Apply \textbf{Position Existence and Uniqueness}, therefore Norton's dome problem is False.
@@ -350,8 +362,8 @@ $$ \implies \vec{F}_{i}(t) - \dfrac{\mathrm{d} \vec{p}_{i}(t)}{\mathrm{d} t} = \
 \begin{axiom}
 \textbf{Newton's Law of Universal Gravitation}: In a physical space of $\left | \mathbb{PM} \right | = n \ge 2$,
 
-$$  \forall \  i,j \in \mathbb{PM}, \quad \vec{F}_{i-j}(t)= C_{G} \ \dfrac{m_i (t) m_j (t)}{\left \| \vec{r}_{i-j} (t)\right \|^2} \ \hat{r}_{i-j} (t) $$
-where $i \ne j$, $\vec{r}_{i-j} (t) = \vec{q}_{i} (t)- \vec{q}_{j} (t)$, $\hat{r}_{i-j} (t) = \dfrac{\vec{r}_{i-j} (t)}{\left \| \vec{r}_{i-j} (t) \right \|}$
+$$  \forall \  i,j \in \mathbb{PM}, \quad \vec{F}_{i-j}(t)= C_{G} \ \dfrac{m_i (t) m_j (t)}{\left \| \vec{d}_{i-j} (t)\right \|^2} \ \hat{d}_{i-j} (t) $$
+where $i \ne j$, $\vec{d}_{i-j} (t) = \vec{r}_{i} (t)- \vec{r}_{j} (t)$, $\hat{d}_{i-j} (t) = \dfrac{\vec{d}_{i-j} (t)}{\left \| \vec{d}_{i-j} (t) \right \|}$
 \end{axiom}
 
 \begin{theorem}
@@ -362,8 +374,8 @@ where $i \ne j$
 \begin{proof}
 Apply \textbf{Newton's Law of Universal Gravitation}
 
-\begin{align*} \vec{F}_{i-j}(t) &= C_{G} \ \dfrac{m_i (t) m_j (t)}{\left \| \vec{r}_{i-j} (t) \right \|^2} \ \hat{r}_{i-j} (t) = C_{G} \ \dfrac{m_j (t) m_i (t)}{\left \|- \vec{r}_{j-i}(t) \right \|^2} \left (-\hat{r}_{j-i}(t) \right ) \\
-&=- C_{G} \ \dfrac{m_i (t) m_j (t)}{\left \| \vec{r}_{j-i}(t) \right \|^2} \ \hat{r}_{j-i}(t) =- \vec{F}_{j-i}(t)
+\begin{align*} \vec{F}_{i-j}(t) &= C_{G} \ \dfrac{m_i (t) m_j (t)}{\left \| \vec{d}_{i-j} (t) \right \|^2} \ \hat{d}_{i-j} (t) = C_{G} \ \dfrac{m_j (t) m_i (t)}{\left \|- \vec{d}_{j-i}(t) \right \|^2} \left (-\hat{d}_{j-i}(t) \right ) \\
+&=- C_{G} \ \dfrac{m_i (t) m_j (t)}{\left \| \vec{d}_{j-i}(t) \right \|^2} \ \hat{d}_{j-i}(t) =- \vec{F}_{j-i}(t)
 \end{align*}
 $$ \implies \vec{F}_{i-j}(t) = - \vec{F}_{j-i}(t) $$
 
@@ -395,7 +407,7 @@ $$\boldsymbol{L}_{i-j}(t) :=  \begin{bmatrix}
 -\boldsymbol{L}^{[\vec{e}_t,\vec{e}_z]}_{i-j}(t) & -\boldsymbol{L}^{[\vec{e}_x,\vec{e}_z]}_{i-j} (t)& -\boldsymbol{L}^{[\vec{e}_y,\vec{e}_z]}_{i-j}(t) & 0
 \end{bmatrix} $$
 \\\\
-where $\boldsymbol{L}^{[a,b]}_{i-j} (t) = \vec{q}^{[a]}_{i-j} (t) \vec{p}^{[b]}_{i-j} (t) - \vec{q}^{[b]}_{i-j} (t) \vec{p}^{[a]}_{i-j} (t)$ and $a, b \in \{ \vec{e}_t, \vec{e}_x, \vec{e}_y, \vec{e}_z \}$
+where $\boldsymbol{L}^{[a,b]}_{i-j} (t) = \vec{r}^{[a]}_{i-j} (t) \vec{p}^{[b]}_{i-j} (t) - \vec{r}^{[b]}_{i-j} (t) \vec{p}^{[a]}_{i-j} (t)$ and $a, b \in \{ \vec{e}_t, \vec{e}_x, \vec{e}_y, \vec{e}_z \}$
 \end{definition}
 
 \begin{definition}
@@ -412,32 +424,44 @@ where $\boldsymbol{L}^{[a,b]}_{i-j} (t) = \vec{q}^{[a]}_{i-j} (t) \vec{p}^{[b]}_
 \end{definition}
 
 \begin{theorem}
-    \textbf{Relative Torque Force}: The relative torque from a point mass $j$ exerted on a point mass $i$ satisfies: 
-    $$\boldsymbol{\tau}_{i-j} ^{[a,b]} (t) = \vec{q}^{[a]}_{i-j} (t)\vec{F}^{[b]}_{i-j} (t) - \vec{q}^{[b]}_{i-j} (t) \vec{F}^{[a]}_{i-j} (t)$$
+    \textbf{Relative Torque (Force)}: The relative torque from a point mass $j$ exerted on a point mass $i$ satisfies: 
+    $$\boldsymbol{\tau}_{i-j} ^{[a,b]} (t) = \vec{r}^{[a]}_{i-j} (t)\vec{F}^{[b]}_{i-j} (t) - \vec{r}^{[b]}_{i-j} (t) \vec{F}^{[a]}_{i-j} (t)$$
     where $a, b \in \{ \vec{e}_t, \vec{e}_x, \vec{e}_y, \vec{e}_z \}$
 \end{theorem}
 
 \begin{proof}
 
 Apply \textbf{Relative Torque}, \textbf{Relative Angular Momentum},
-$$ \boldsymbol{\tau}_{i-j} (t) = \dfrac{\mathrm{d} \boldsymbol{L}_{i-j}(t)}{\mathrm{d} t} \implies \boldsymbol{\tau}^{[a,b]}_{i-j} (t) = \dfrac{\mathrm{d} \left ( \boldsymbol{L}^{[a,b]}_{i-j} (t) \right )}{\mathrm{d} t} = \dfrac{\mathrm{d} \left (\vec{q}^{[a]}_{i-j} (t) \vec{p}^{[b]}_{i-j} (t) - \vec{q}^{[b]}_{i-j} (t) \vec{p}^{[a]}_{i-j} (t) \right )}{\mathrm{d} t} $$
+$$ \boldsymbol{\tau}_{i-j} (t) = \dfrac{\mathrm{d} \boldsymbol{L}_{i-j}(t)}{\mathrm{d} t} \implies \boldsymbol{\tau}^{[a,b]}_{i-j} (t) = \dfrac{\mathrm{d} \left ( \boldsymbol{L}^{[a,b]}_{i-j} (t) \right )}{\mathrm{d} t} = \dfrac{\mathrm{d} \left (\vec{r}^{[a]}_{i-j} (t) \vec{p}^{[b]}_{i-j} (t) - \vec{r}^{[b]}_{i-j} (t) \vec{p}^{[a]}_{i-j} (t) \right )}{\mathrm{d} t} $$
     
-\begin{align*} &= \dfrac{\mathrm{d} \left ( \vec{q}^{[a]}_{i-j} (t) \vec{p}^{[b]}_{i-j} (t) \right )}{\mathrm{d} t} - \dfrac{\mathrm{d} \left ( \vec{q}^{[b]}_{i-j} (t) \vec{p}^{[a]}_{i-j} (t) \right )}{\mathrm{d} t} \\
-&= \dfrac{\mathrm{d} \left ( \vec{q}^{[a]}_{i-j} (t) \right )}{\mathrm{d} t} \vec{p}^{[b]}_{i-j} (t) + \vec{q}^{[a]}_{i-j} (t) \dfrac{\mathrm{d} \left ( \vec{p}^{[b]}_{i-j} (t) \right )}{\mathrm{d} t} - \dfrac{\mathrm{d} \left ( \vec{q}^{[b]}_{i-j} (t) \right ) }{\mathrm{d} t} \vec{p}^{[a]}_{i-j} (t) - \vec{q}^{[b]}_{i-j} (t) \dfrac{\mathrm{d} \left ( \vec{p}^{[a]}_{i-j} (t) \right ) }{\mathrm{d} t} \\
-&= \left ( \dfrac{\mathrm{d}  \vec{q}_{i-j} (t)}{\mathrm{d} t} \right ) ^{[a]} \vec{p}^{[b]}_{i-j} (t) + \vec{q}^{[a]}_{i-j} (t) \left (  \dfrac{\mathrm{d} \vec{p}_{i-j} (t)}{\mathrm{d} t} \right )^{[b]} - \left (\dfrac{\mathrm{d}  \vec{q}_{i-j} (t) }{\mathrm{d} t}\right ) ^{[b]} \vec{p}^{[a]}_{i-j} (t) - \vec{q}^{[b]}_{i-j} (t) \left ( \dfrac{\mathrm{d}  \vec{p}_{i-j} (t) }{\mathrm{d} t}  \right )^{[a]}
+\begin{align*} &= \dfrac{\mathrm{d} \left ( \vec{r}^{[a]}_{i-j} (t) \vec{p}^{[b]}_{i-j} (t) \right )}{\mathrm{d} t} - \dfrac{\mathrm{d} \left ( \vec{r}^{[b]}_{i-j} (t) \vec{p}^{[a]}_{i-j} (t) \right )}{\mathrm{d} t} \\
+&= \dfrac{\mathrm{d} \left ( \vec{r}^{[a]}_{i-j} (t) \right )}{\mathrm{d} t} \vec{p}^{[b]}_{i-j} (t) + \vec{r}^{[a]}_{i-j} (t) \dfrac{\mathrm{d} \left ( \vec{p}^{[b]}_{i-j} (t) \right )}{\mathrm{d} t} - \dfrac{\mathrm{d} \left ( \vec{r}^{[b]}_{i-j} (t) \right ) }{\mathrm{d} t} \vec{p}^{[a]}_{i-j} (t) - \vec{r}^{[b]}_{i-j} (t) \dfrac{\mathrm{d} \left ( \vec{p}^{[a]}_{i-j} (t) \right ) }{\mathrm{d} t} \\
+&= \left ( \dfrac{\mathrm{d}  \vec{r}_{i-j} (t)}{\mathrm{d} t} \right ) ^{[a]} \vec{p}^{[b]}_{i-j} (t) + \vec{r}^{[a]}_{i-j} (t) \left (  \dfrac{\mathrm{d} \vec{p}_{i-j} (t)}{\mathrm{d} t} \right )^{[b]} - \left (\dfrac{\mathrm{d}  \vec{r}_{i-j} (t) }{\mathrm{d} t}\right ) ^{[b]} \vec{p}^{[a]}_{i-j} (t) - \vec{r}^{[b]}_{i-j} (t) \left ( \dfrac{\mathrm{d}  \vec{p}_{i-j} (t) }{\mathrm{d} t}  \right )^{[a]}
 \end{align*}
 Apply \textbf{Relative Velocity} and \textbf{Relative Force}, 
-$$= \vec{v}_{i-j} ^{[a]} (t) \vec{p}^{[b]}_{i-j} (t) + \vec{q}^{[a]}_{i-j} (t) \vec{F}_{i-j}^{[b]} (t) - \vec{v}_{i-j} ^{[b]} (t) \vec{p}^{[a]}_{i-j} (t) - \vec{q}^{[b]}_{i-j} (t) \vec{F}_{i-j}^{[a]} (t)$$
+$$= \vec{v}_{i-j} ^{[a]} (t) \vec{p}^{[b]}_{i-j} (t) + \vec{r}^{[a]}_{i-j} (t) \vec{F}_{i-j}^{[b]} (t) - \vec{v}_{i-j} ^{[b]} (t) \vec{p}^{[a]}_{i-j} (t) - \vec{r}^{[b]}_{i-j} (t) \vec{F}_{i-j}^{[a]} (t)$$
 
 Apply \textbf{Relative Linear Momentum},
 \begin{align*}
- &= \vec{v}_{i-j} ^{[a]} (t) \left ( m_i (t)\vec{v}_{i-j} (t) \right )^{[b]} + \vec{q}^{[a]}_{i-j} (t) \vec{F}_{i-j}^{[b]} (t) - \vec{v}_{i-j} ^{[b]} (t) \left ( m_i (t)\vec{v}_{i-j} (t) \right )^{[a]} - \vec{q}^{[b]}_{i-j} (t) \vec{F}_{i-j}^{[a]} (t) \\
- &= \vec{v}_{i-j} ^{[a]} (t)  m_i (t) \vec{v}_{i-j} ^{[b]} (t) + \vec{q}^{[a]}_{i-j} (t) \vec{F}_{i-j}^{[b]} (t) - \vec{v}_{i-j} ^{[b]} (t)  m_i (t)\vec{v}_{i-j} ^{[a]} (t) - \vec{q}^{[b]}_{i-j} (t) \vec{F}_{i-j}^{[a]} (t) \\
- &= \left ( \vec{v}_{i-j} ^{[a]} (t)  m_i (t) \vec{v}_{i-j} ^{[b]} (t) - \vec{v}_{i-j} ^{[a]} (t)  m_i (t)\vec{v}_{i-j} ^{[b]} (t) \right ) + \left ( \vec{q}^{[a]}_{i-j} (t) \vec{F}_{i-j}^{[b]} (t) - \vec{q}^{[b]}_{i-j} (t) \vec{F}_{i-j}^{[a]} (t) \right )\\
- &= 0 + \left ( \vec{q}^{[a]}_{i-j} (t) \vec{F}^{[b]}_{i-j} (t) - \vec{q}^{[b]}_{i-j} (t) \vec{F}^{[a]}_{i-j} (t) \right )= \vec{q}^{[a]}_{i-j} (t) \vec{F}^{[b]}_{i-j} (t) - \vec{q}^{[b]}_{i-j} (t) \vec{F}^{[a]}_{i-j} (t)
+ &= \vec{v}_{i-j} ^{[a]} (t) \left ( m_i (t)\vec{v}_{i-j} (t) \right )^{[b]} + \vec{r}^{[a]}_{i-j} (t) \vec{F}_{i-j}^{[b]} (t) - \vec{v}_{i-j} ^{[b]} (t) \left ( m_i (t)\vec{v}_{i-j} (t) \right )^{[a]} - \vec{r}^{[b]}_{i-j} (t) \vec{F}_{i-j}^{[a]} (t) \\
+ &= \vec{v}_{i-j} ^{[a]} (t)  m_i (t) \vec{v}_{i-j} ^{[b]} (t) + \vec{r}^{[a]}_{i-j} (t) \vec{F}_{i-j}^{[b]} (t) - \vec{v}_{i-j} ^{[b]} (t)  m_i (t)\vec{v}_{i-j} ^{[a]} (t) - \vec{r}^{[b]}_{i-j} (t) \vec{F}_{i-j}^{[a]} (t) \\
+ &= \left ( \vec{v}_{i-j} ^{[a]} (t)  m_i (t) \vec{v}_{i-j} ^{[b]} (t) - \vec{v}_{i-j} ^{[a]} (t)  m_i (t)\vec{v}_{i-j} ^{[b]} (t) \right ) + \left ( \vec{r}^{[a]}_{i-j} (t) \vec{F}_{i-j}^{[b]} (t) - \vec{r}^{[b]}_{i-j} (t) \vec{F}_{i-j}^{[a]} (t) \right )\\
+ &= 0 + \left ( \vec{r}^{[a]}_{i-j} (t) \vec{F}^{[b]}_{i-j} (t) - \vec{r}^{[b]}_{i-j} (t) \vec{F}^{[a]}_{i-j} (t) \right )= \vec{r}^{[a]}_{i-j} (t) \vec{F}^{[b]}_{i-j} (t) - \vec{r}^{[b]}_{i-j} (t) \vec{F}^{[a]}_{i-j} (t)
  \end{align*}
-$$\implies \boldsymbol{ \tau}_{i-j}^{[a,b]} (t) = \vec{q}^{[a]}_{i-j} (t) \vec{F}^{[b]}_{i-j} (t) - \vec{q}^{[b]}_{i-j} (t) \vec{F}^{[a]}_{i-j} (t)$$
+$$\implies \boldsymbol{ \tau}_{i-j}^{[a,b]} (t) = \vec{r}^{[a]}_{i-j} (t) \vec{F}^{[b]}_{i-j} (t) - \vec{r}^{[b]}_{i-j} (t) \vec{F}^{[a]}_{i-j} (t)$$
 
+\end{proof}
+
+\begin{theorem}
+    \textbf{Relative Torque (IRF)}: In a physical space of $\left | \mathbb{PM} \right | = n$, within IRF, $$ \boldsymbol{\tau}_{i-i} (t) = \boldsymbol{0} $$
+\end{theorem}
+
+\begin{proof}
+Apply \textbf{Relative Torque (IRF)} and \textbf{Relative Force (IRF)},
+
+$$ \boldsymbol{\tau}_{i-i} ^{[a,b]} (t) = \vec{r}^{[a]}_{i-i} (t)\vec{F}^{[b]}_{i-i} (t) - \vec{r}^{[b]}_{i-i} (t) \vec{F}^{[a]}_{i-i} (t) = \vec{r}^{[a]}_{i-i} (t)\, \vec{0}^{[b]}_{i-i} - \vec{r}^{[b]}_{i-i} (t) \, \vec{0}^{[a]}_{i-i}= 0 $$
+
+$$ \implies \boldsymbol{\tau}_{i-i} (t) = \boldsymbol{0} $$
 \end{proof}
 
 \begin{definition}
@@ -471,6 +495,59 @@ $$ \implies \sum_{i \in \mathbb{PM}} \boldsymbol{L}_{i}(t_F)- \sum_{i \in \mathb
 \end{proof}
 
 \begin{definition}
+\textbf{Central Force Problem}: In a physical space of $\left | \mathbb{PM} \right | = 2$ , within IRF, the central force problem is the force $\vec{F}_{i-j}$ exerted by a point mass $j$ on a point mass $i$ can be expressed as:
+
+$$ \vec{F}_{i-j}(t) = f(\left \|\vec{d}_{i-j} (t)\right \|)\ \hat{d}_{i-j} (t) $$
+
+where $\vec{d}_{i-j} (t) = \vec{r}_{i} (t)- \vec{r}_{j} (t)$ , $\hat{d}_{i-j} (t) = \dfrac{\vec{d}_{i-j} (t)}{\left \| \vec{d}_{i-j} (t) \right \|}$ and $f$ is a scalar function of $r_{i-j}(t)$.
+\end{definition}
+
+\begin{proposition}
+    In any central force problem, the total angular momentum is conserved, which
+    $$ \sum_{i \in \mathbb{PM}} \left( \boldsymbol{L}_{i}(t_F) \right)- \sum_{i \in \mathbb{PM}} \left( \boldsymbol{L}_{i}(t_I) \right) = \boldsymbol{0} $$
+\end{proposition}
+
+\begin{proof}
+    Apply \textbf{Torque} and \textbf{Relative Torque (IRF)},
+    \begin{align*}
+    \left | \mathbb{PM} \right | = 2 \implies \displaystyle \sum_{i \in \mathbb{PM}} \boldsymbol{\tau}_{i} (t) & = \boldsymbol{\tau}_{i} (t)+\boldsymbol{\tau}_{j} (t) = \boldsymbol{\tau}_{i-i} (t) + \boldsymbol{\tau}_{i-j} (t)  + \boldsymbol{\tau}_{j-j} (t)+\boldsymbol{\tau}_{j-i} (t) \\
+    &  = \boldsymbol{0} + \boldsymbol{\tau}_{i-j} (t)  + \boldsymbol{0}+\boldsymbol{\tau}_{j-i} (t)= \boldsymbol{\tau}_{i-j} (t) + \boldsymbol{\tau}_{j-i} (t)
+    \end{align*}
+    Apply \textbf{Relative Torque (Force)},
+    $$ \implies \displaystyle \sum_{i \in \mathbb{PM}} \left ( \boldsymbol{\tau}_{i} ^{[a,b]} (t) \right ) = \vec{r}^{[a]}_{i-j} (t)\vec{F}^{[b]}_{i-j} (t) - \vec{r}^{[b]}_{i-j} (t) \vec{F}^{[a]}_{i-j} (t) + \vec{r}^{[a]}_{j-i} (t)\vec{F}^{[b]}_{j-i} - \vec{r}^{[b]}_{j-i} (t) \vec{F}^{[a]}_{j-i} (t) $$
+    where $a, b \in \{ \vec{e}_t, \vec{e}_x, \vec{e}_y, \vec{e}_z \}$
+    \\\\
+    Apply \textbf{Newton's 3rd Law},
+    \begin{align*} &= \vec{r}^{[a]}_{i-j} (t)\vec{F}^{[b]}_{i-j} (t) - \vec{r}^{[b]}_{i-j} (t) \vec{F}^{[a]}_{i-j} (t) - \vec{r}^{[a]}_{j-i} (t)\vec{F}^{[b]}_{i-j} (t) + \vec{r}^{[b]}_{j-i} (t) \vec{F}^{[a]}_{i-j} (t)\\
+    &= \vec{F}^{[b]}_{i-j} (t) \left ( \vec{r}^{[a]}_{i-j} (t) - \vec{r}^{[a]}_{j-i} (t) \right ) -  \vec{F}^{[a]}_{i-j} (t) \left ( \vec{r}^{[b]}_{i-j} (t) - \vec{r}^{[b]}_{j-i} (t)  \right )\\
+    &= \vec{F}^{[b]}_{i-j} (t) \left ( \vec{r}_{i-j} (t) - \vec{r}_{j-i} (t) \right )^{[a]} -  \vec{F}^{[a]}_{i-j} (t) \left ( \vec{r}_{i-j} (t) - \vec{r}_{j-i} (t)  \right )^{[b]}
+    \end{align*}
+    Apply \textbf{IRF} and \textbf{Position},
+    \begin{align*}
+    =& \vec{F}^{[b]}_{i-j} (t) \left ( (\vec{r}_{i-j} (t) + \vec{r}_{i-i} (t)) - (\vec{r}_{j-i} (t) +\vec{r}_{j-j} (t)) \right )^{[a]} \\
+    &- \vec{F}^{[a]}_{i-j} (t) \left ( (\vec{r}_{i-j} (t)+ \vec{r}_{i-i} (t)) - (\vec{r}_{j-i} (t)+\vec{r}_{j-j} (t) ) \right )^{[b]}\\
+    =& \vec{F}^{[b]}_{i-j} (t) \left ( \vec{r}_{i} (t) - \vec{r}_{j} (t) \right )^{[a]} -  \vec{F}^{[a]}_{i-j} (t) \left ( \vec{r}_{i} (t) - \vec{r}_{j} (t)  \right )^{[b]}
+    \end{align*}
+    Apply \textbf{Central Force Problem},
+    \begin{align*}
+    &= \vec{F}^{[b]}_{i-j} (t)  \vec{d}^{[a]}_{i-j} (t) -  \vec{F}^{[a]}_{i-j} (t) \vec{d}^{[b]}_{i-j} (t)\\
+    & = \left ( f(\left \|\vec{d}_{i-j} (t)\right \|)\ \hat{d}_{i-j} (t) \right ) ^{[b]} \vec{d}^{[a]}_{i-j} (t) -  \left ( f(\left \|\vec{d}_{i-j} (t)\right \|)\ \hat{d}_{i-j} (t) \right ) ^{[a]} \vec{d}^{[b]}_{i-j} (t)\\
+    & =  f(\left \|\vec{d}_{i-j} (t)\right \|) \left ( \hat{d}_{i-j} (t) \right ) ^{[b]} \vec{d}^{[a]}_{i-j} (t) -  f(\left \|\vec{d}_{i-j} (t)\right \|) \left ( \hat{d}_{i-j} (t) \right ) ^{[a]} \vec{d}^{[b]}_{i-j} (t)\\
+    & =  f(\left \|\vec{d}_{i-j} (t)\right \|) \left ( \left ( \dfrac{\vec{d}_{i-j} (t)}{\left \| \vec{d}_{i-j} (t) \right \|} \right ) ^{[b]} \vec{d}^{[a]}_{i-j} (t) -   \left ( \dfrac{\vec{d}_{i-j} (t)}{\left \| \vec{d}_{i-j} (t) \right \|} \right ) ^{[a]} \vec{d}^{[b]}_{i-j} (t) \right ) \\
+    &=  \dfrac{f(\left \|\vec{d}_{i-j} (t)\right \|)}{\left \| \vec{d}_{i-j} (t) \right \|} \left ( \vec{d}_{i-j} ^{[b]} (t) \vec{d}^{[a]}_{i-j} (t) -   \vec{d}_{i-j} (t)  ^{[a]} \vec{d}^{[b]}_{i-j} (t) \right ) \\
+    & =  \dfrac{f(\left \|\vec{d}_{i-j} (t)\right \|)}{\left \| \vec{d}_{i-j} (t) \right \|} \left ( \vec{d}^{[a]}_{i-j} (t) \vec{d}_{i-j} ^{[b]} (t) -   \vec{d}_{i-j} (t)  ^{[a]} \vec{d}^{[b]}_{i-j} (t) \right )\\
+    &=  \dfrac{f(\left \|\vec{d}_{i-j} (t)\right \|)}{\left \| \vec{d}_{i-j} (t) \right \|} \cdot 0 = 0\\
+    &\implies \displaystyle \sum_{i \in \mathbb{PM}} \left ( \boldsymbol{\tau}_{i} ^{[a,b]} (t) \right ) = 0 \\
+    &\implies \displaystyle \sum_{i \in \mathbb{PM}} \boldsymbol{\tau}_{i} (t) = \boldsymbol{0}
+    \end{align*}
+    Apply \textbf{Conservation Of Total Angular Momentum},
+    $$
+    \displaystyle \sum_{i \in \mathbb{PM}} \boldsymbol{\tau}_{i} (t) = \boldsymbol{0} \implies \sum_{i \in \mathbb{PM}} \left( \boldsymbol{L}_{i}(t_F) \right)- \sum_{i \in \mathbb{PM}} \left( \boldsymbol{L}_{i}(t_I) \right) = \boldsymbol{0}
+    $$
+    
+\end{proof}
+
+\begin{definition}
     \textbf{Kinetic Energy}: In a physical space of $\left | \mathbb{PM} \right | = n$, the kinetic energy of a point mass $i$ is denoted as $$ K_i (t, \vec{v}_i) := \dfrac{1}{2} m_i (t) \left \| \vec{v}_i \right \|^2 $$
 \end{definition}
 
@@ -479,40 +556,40 @@ $$ \implies \sum_{i \in \mathbb{PM}} \boldsymbol{L}_{i}(t_F)- \sum_{i \in \mathb
 \end{definition}
 
 \begin{definition}
-    \textbf{Potential Energy}: In a physical space of $\left | \mathbb{PM} \right | = n$, the potential energy of any point mass $i$ is a function $$  U_i \left ( t, \vec{q}_i \right ) \in \mathbb{R} $$
+    \textbf{Potential Energy}: In a physical space of $\left | \mathbb{PM} \right | = n$, the potential energy of any point mass $i$ is a function $$  U_i \left ( t, \vec{r}_i \right ) \in \mathbb{R} $$
 \end{definition}
 
 \begin{definition}
-    \textbf{Total Potential Energy}: In a physical space of $\left | \mathbb{PM} \right | = n$, the total potential energy is denoted as $$U\left ( t, \vec{q}_\mathbb{PM} \right ) := \sum_{i \in \mathbb{PM}}  U_i \left ( t, \vec{q}_i \right )  $$
+    \textbf{Total Potential Energy}: In a physical space of $\left | \mathbb{PM} \right | = n$, the total potential energy is denoted as $$U\left ( t, \vec{r}_\mathbb{PM} \right ) := \sum_{i \in \mathbb{PM}}  U_i \left ( t, \vec{r}_i \right )  $$
 \end{definition}
 
 \begin{definition}
-    \textbf{Mechanical Energy}: In a physical space of $\left | \mathbb{PM} \right | = n$, the mechanical energy of any point mass $i$ is a function $$E_i(t, \vec{q}_i, \vec{v}_i) := K_i (t, \vec{v}_i) +  U_i \left ( t, \vec{q}_i \right )$$
+    \textbf{Mechanical Energy}: In a physical space of $\left | \mathbb{PM} \right | = n$, the mechanical energy of any point mass $i$ is a function $$E_i(t, \vec{r}_i, \vec{v}_i) := K_i (t, \vec{v}_i) +  U_i \left ( t, \vec{r}_i \right )$$
 \end{definition}
 
 \begin{definition}
-    \textbf{Total Mechanical Energy}: In a physical space of $\left | \mathbb{PM} \right | = n$, the mechanical energy of any point mass $i$ is a function $$E(t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM}) := \sum_{i \in \mathbb{PM}} E_i(t, \vec{q}_i, \vec{v}_i)$$
+    \textbf{Total Mechanical Energy}: In a physical space of $\left | \mathbb{PM} \right | = n$, the mechanical energy of any point mass $i$ is a function $$E(t, \vec{r}_\mathbb{PM}, \vec{v}_\mathbb{PM}) := \sum_{i \in \mathbb{PM}} E_i(t, \vec{r}_i, \vec{v}_i)$$
 \end{definition}
 
 \begin{definition}
-    \textbf{Potential System}: In a physical space of $\left | \mathbb{PM} \right | = n$, the potential system is a system that satisfies $$\forall \  i \in \mathbb{PM}, \quad \vec{F}_i (t) = - \nabla U_i \left ( t, \vec{q}_i  \right) + \vec{\mathcal{F}}_i(t) $$ where $ \nabla  U_i \left ( t, \vec{q}_i \right )  = \left < 0, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial x_i}, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial y_i}, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial z_i} \right >, \quad \vec{\mathcal{F}}_i \in \mathbb{R}^4 $
+    \textbf{Potential System}: In a physical space of $\left | \mathbb{PM} \right | = n$, the potential system is a system that satisfies $$\forall \  i \in \mathbb{PM}, \quad \vec{F}_i (t) = - \nabla U_i \left ( t, \vec{r}_i  \right) + \vec{\mathcal{F}}_i(t) $$ where $ \nabla  U_i \left ( t, \vec{r}_i \right )  = \left < 0, \dfrac{\partial U_i (t, \vec{r}_i)}{\partial x_i}, \dfrac{\partial U_i (t, \vec{r}_i)}{\partial y_i}, \dfrac{\partial U_i (t, \vec{r}_i)}{\partial z_i} \right >, \quad \vec{\mathcal{F}}_i \in \mathbb{R}^4 $
 \end{definition}
 
 
 \begin{definition}
-    \textbf{Non-Conservative System}: In a physical space of $\left | \mathbb{PM} \right | = n$, the non-conservative system is the potential system with the non-conservative force $\vec{\mathcal{F}}_i$, which $$\forall \  i \in \mathbb{PM}, \quad \vec{F}_i (t) = - \nabla U_i \left ( t, \vec{q}_i  \right) + \vec{\mathcal{F}}_i(t) $$ where $ \nabla  U_i \left ( t, \vec{q}_i \right )  = \left < 0, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial x_i}, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial y_i}, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial z_i} \right >, \quad \vec{\mathcal{F}}_i (t) \ne \vec{0} $
+    \textbf{Non-Conservative System}: In a physical space of $\left | \mathbb{PM} \right | = n$, the non-conservative system is the potential system with the non-conservative force $\vec{\mathcal{F}}_i$, which $$\forall \  i \in \mathbb{PM}, \quad \vec{F}_i (t) = - \nabla U_i \left ( t, \vec{r}_i  \right) + \vec{\mathcal{F}}_i(t) $$ where $ \nabla  U_i \left ( t, \vec{r}_i \right )  = \left < 0, \dfrac{\partial U_i (t, \vec{r}_i)}{\partial x_i}, \dfrac{\partial U_i (t, \vec{r}_i)}{\partial y_i}, \dfrac{\partial U_i (t, \vec{r}_i)}{\partial z_i} \right >, \quad \vec{\mathcal{F}}_i (t) \ne \vec{0} $
 \end{definition}
 
 \begin{definition}
-    \textbf{Conservative System}: In a physical space of $\left | \mathbb{PM} \right | = n$, the conservative system is the potential system with conservative force only, which $$\forall \  i \in \mathbb{PM}, \quad \vec{F}_i (t) = - \nabla U_i \left ( t, \vec{q}_i  \right) + \vec{\mathcal{F}}_i(t)$$ where $  \nabla  U_i \left ( t, \vec{q}_i \right )  = \left < 0, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial x_i}, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial y_i}, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial z_i} \right >, \quad \vec{\mathcal{F}}_i (t) \ne \vec{0}$
+    \textbf{Conservative System}: In a physical space of $\left | \mathbb{PM} \right | = n$, the conservative system is the potential system with conservative force only, which $$\forall \  i \in \mathbb{PM}, \quad \vec{F}_i (t) = - \nabla U_i \left ( t, \vec{r}_i  \right) + \vec{\mathcal{F}}_i(t)$$ where $  \nabla  U_i \left ( t, \vec{r}_i \right )  = \left < 0, \dfrac{\partial U_i (t, \vec{r}_i)}{\partial x_i}, \dfrac{\partial U_i (t, \vec{r}_i)}{\partial y_i}, \dfrac{\partial U_i (t, \vec{r}_i)}{\partial z_i} \right >, \quad \vec{\mathcal{F}}_i (t) \ne \vec{0}$
 \end{definition}
 
 \begin{definition}
-    \textbf{Explicit Time Invariance}: In a physical space of $\left | \mathbb{PM} \right | = n$, a potential energy has time invariance which it satisfies $$\forall \  t_c \in \mathbb{R}, \quad  \sum_{i \in \mathbb{PM}}   U_i \left ( t+t_c, \vec{q}_i \right ) - \sum_{i \in \mathbb{PM}}   U_i \left ( t, \vec{q}_i \right )  = 0 $$
+    \textbf{Explicit Time Invariance}: In a physical space of $\left | \mathbb{PM} \right | = n$, a potential energy has time invariance which it satisfies $$\forall \  t_c \in \mathbb{R}, \quad  \sum_{i \in \mathbb{PM}}   U_i \left ( t+t_c, \vec{r}_i \right ) - \sum_{i \in \mathbb{PM}}   U_i \left ( t, \vec{r}_i \right )  = 0 $$
 \end{definition}
 
 \begin{definition}
-    \textbf{Explicit Translational Invariance}: In a physical space of $\left | \mathbb{PM} \right | = n$, a potential energy has translational invariance which it satisfies $$\forall \  \vec{q}_c \in \mathbb{R}^3, \quad  \sum_{i \in \mathbb{PM}}   U_i \left ( t, \vec{q}_i + \vec{q}_c \right ) - \sum_{i \in \mathbb{PM}}   U_i \left ( t, \vec{q}_i \right ) = 0 $$
+    \textbf{Explicit Translational Invariance}: In a physical space of $\left | \mathbb{PM} \right | = n$, a potential energy has translational invariance which it satisfies $$\forall \  \vec{r}_c \in \mathbb{R}^3, \quad  \sum_{i \in \mathbb{PM}}   U_i \left ( t, \vec{r}_i + \vec{r}_c \right ) - \sum_{i \in \mathbb{PM}}   U_i \left ( t, \vec{r}_i \right ) = 0 $$
 \end{definition}
 
 \begin{theorem}
@@ -524,26 +601,26 @@ Apply \textbf{Total Mechanical Energy}, \textbf{Total Kinetic Energy}, \textbf{T
 
 \begin{align*}
 \dfrac{\mathrm{d} E(t)}{\mathrm{d} t} 
-&= \dfrac{\mathrm{d}}{\mathrm{d} t} \left( K (t, \vec{v}_\mathbb{PM}) + U  (t, \vec{q}_\mathbb{PM}) \right) = \dfrac{\mathrm{d}}{\mathrm{d} t} \left( \displaystyle\sum_{i \in \mathbb{PM}}\left(\dfrac{1}{2}  m_i (t) \left \| \vec{v}_i (t) \right \|^2 \right) + U  (t, \vec{q}_\mathbb{PM}) \right) \\ 
-&= \dfrac{\mathrm{d}}{\mathrm{d} t} \left( \displaystyle\sum_{i \in \mathbb{PM}} \left( \dfrac{1}{2} m_i (t) \left \| \vec{v}_i (t) \right \|^2 \right) \right) + \dfrac{\mathrm{d} U  (t, \vec{q}_\mathbb{PM})}{\mathrm{d} t} \\ 
+&= \dfrac{\mathrm{d}}{\mathrm{d} t} \left( K (t, \vec{v}_\mathbb{PM}) + U  (t, \vec{r}_\mathbb{PM}) \right) = \dfrac{\mathrm{d}}{\mathrm{d} t} \left( \displaystyle\sum_{i \in \mathbb{PM}}\left(\dfrac{1}{2}  m_i (t) \left \| \vec{v}_i (t) \right \|^2 \right) + U  (t, \vec{r}_\mathbb{PM}) \right) \\ 
+&= \dfrac{\mathrm{d}}{\mathrm{d} t} \left( \displaystyle\sum_{i \in \mathbb{PM}} \left( \dfrac{1}{2} m_i (t) \left \| \vec{v}_i (t) \right \|^2 \right) \right) + \dfrac{\mathrm{d} U  (t, \vec{r}_\mathbb{PM})}{\mathrm{d} t} \\ 
 &= \displaystyle\sum_{i \in \mathbb{PM}}\left( \dfrac{\mathrm{d}}{\mathrm{d} t} \left( \dfrac{1}{2} m_i (t) \left \| \vec{v}_i (t) \right \|^2 \right) \right) \\
-& \quad \ + \left ( \dfrac{\partial U  (t, \vec{q}_\mathbb{PM})}{\partial t} + \displaystyle \sum_{i \in \mathbb{PM}} \left ( \dfrac{\partial U  (t, \vec{q}_\mathbb{PM})}{\partial x_i}\dfrac{\mathrm{d} x_i(t)}{\mathrm{d} t} + \dfrac{\partial U  (t, \vec{q}_\mathbb{PM})}{\partial y_i}\dfrac{\mathrm{d} y_i(t)}{\mathrm{d} t} + \dfrac{\partial U  (t, \vec{q}_\mathbb{PM})}{\partial z_i}\dfrac{\mathrm{d} z_i(t)}{\mathrm{d} t} \right ) \right ) \\ 
+& \quad \ + \left ( \dfrac{\partial U  (t, \vec{r}_\mathbb{PM})}{\partial t} + \displaystyle \sum_{i \in \mathbb{PM}} \left ( \dfrac{\partial U  (t, \vec{r}_\mathbb{PM})}{\partial x_i}\dfrac{\mathrm{d} x_i(t)}{\mathrm{d} t} + \dfrac{\partial U  (t, \vec{r}_\mathbb{PM})}{\partial y_i}\dfrac{\mathrm{d} y_i(t)}{\mathrm{d} t} + \dfrac{\partial U  (t, \vec{r}_\mathbb{PM})}{\partial z_i}\dfrac{\mathrm{d} z_i(t)}{\mathrm{d} t} \right ) \right ) \\ 
 &= \dfrac{1}{2} \displaystyle\sum_{i \in \mathbb{PM}}\left( m_i (t) \dfrac{\mathrm{d}}{\mathrm{d} t} \left( \vec{v}_i (t) \cdot \vec{v}_i (t) \right) \right)\\
-& \quad \ + \left ( \dfrac{\partial U  (t, \vec{q}_\mathbb{PM})}{\partial t} + \displaystyle \sum_{i \in \mathbb{PM}} \left ( 0 \dfrac{\mathrm{d} t}{\mathrm{d} t} +\dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial x_i}\dfrac{\mathrm{d} x_i(t)}{\mathrm{d} t} + \dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial y_i}\dfrac{\mathrm{d} y_i(t)}{\mathrm{d} t} + \dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial z_i}\dfrac{\mathrm{d} z_i(t)}{\mathrm{d} t} \right ) \right )
+& \quad \ + \left ( \dfrac{\partial U  (t, \vec{r}_\mathbb{PM})}{\partial t} + \displaystyle \sum_{i \in \mathbb{PM}} \left ( 0 \dfrac{\mathrm{d} t}{\mathrm{d} t} +\dfrac{\partial  U_i \left ( t, \vec{r}_i \right )}{\partial x_i}\dfrac{\mathrm{d} x_i(t)}{\mathrm{d} t} + \dfrac{\partial  U_i \left ( t, \vec{r}_i \right )}{\partial y_i}\dfrac{\mathrm{d} y_i(t)}{\mathrm{d} t} + \dfrac{\partial  U_i \left ( t, \vec{r}_i \right )}{\partial z_i}\dfrac{\mathrm{d} z_i(t)}{\mathrm{d} t} \right ) \right )
 \end{align*}
 Apply \textbf{Total Potential Energy},
 \begin{align*}
 &= \dfrac{1}{2}\displaystyle\sum_{i \in \mathbb{PM}}\left( m_i (t) \left ( \vec{v}_i \cdot \dfrac{\mathrm{d} \vec{v}_i (t)}{\mathrm{d} t} + \dfrac{\mathrm{d} \vec{v}_i (t)}{\mathrm{d} t} \cdot \vec{v}_i\right) \right )\\
-& \quad \ + \lim_{t_c \to 0} \left ( \dfrac{ \displaystyle \sum_{i \in \mathbb{PM}}  U_i \left ( t+t_c, \vec{q}_i \right ) - \displaystyle \sum_{i \in \mathbb{PM}}  U_i \left ( t, \vec{q}_i \right ) }{t_c} \right ) \\
-& \quad \ +  \displaystyle \sum_{i \in \mathbb{PM}} \left ( \left < 0, \dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial x_i},\dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial y_i}, \dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial z_i} \right > \cdot \left < \dfrac{\mathrm{d} t}{\mathrm{d} t}, \dfrac{\mathrm{d} x_i(t)}{\mathrm{d} t}, \dfrac{\mathrm{d} y_i(t)}{\mathrm{d} t}, \dfrac{\mathrm{d} z_i(t)}{\mathrm{d} t}\right > \right )
+& \quad \ + \lim_{t_c \to 0} \left ( \dfrac{ \displaystyle \sum_{i \in \mathbb{PM}}  U_i \left ( t+t_c, \vec{r}_i \right ) - \displaystyle \sum_{i \in \mathbb{PM}}  U_i \left ( t, \vec{r}_i \right ) }{t_c} \right ) \\
+& \quad \ +  \displaystyle \sum_{i \in \mathbb{PM}} \left ( \left < 0, \dfrac{\partial  U_i \left ( t, \vec{r}_i \right )}{\partial x_i},\dfrac{\partial  U_i \left ( t, \vec{r}_i \right )}{\partial y_i}, \dfrac{\partial  U_i \left ( t, \vec{r}_i \right )}{\partial z_i} \right > \cdot \left < \dfrac{\mathrm{d} t}{\mathrm{d} t}, \dfrac{\mathrm{d} x_i(t)}{\mathrm{d} t}, \dfrac{\mathrm{d} y_i(t)}{\mathrm{d} t}, \dfrac{\mathrm{d} z_i(t)}{\mathrm{d} t}\right > \right )
 \end{align*}
 Apply \textbf{Explicit Time Invariance} and \textbf{Conservative System},
 \begin{align*}
-&= \dfrac{1}{2}\displaystyle\sum_{i \in \mathbb{PM}}\left( m_i (t) \left ( \vec{v}_i (t) \cdot \vec{a}_i (t) + \vec{a}_i (t) \cdot \vec{v}_i (t)\right) \right ) + \lim_{t_c \to 0} \left ( \dfrac{ 0 }{t_c} \right ) +  \displaystyle \sum_{i \in \mathbb{PM}} \left ( \nabla U_i \left ( t, \vec{q}_i \right )  \cdot \vec{v}_i (t) \right ) \\
-&= \dfrac{1}{2}\displaystyle\sum_{i \in \mathbb{PM}}\left( m_i (t) \left ( 2 \vec{v}_i (t) \cdot \vec{a}_i (t)\right) \right ) + \lim_{t_c \to 0} \left (0 \right ) +  \displaystyle \sum_{i \in \mathbb{PM}} \left ( \vec{v}_i (t) \cdot \nabla U_i \left ( t, \vec{q}_i \right )  \right ) \\
-&= \displaystyle\sum_{i \in \mathbb{PM}}\left( \vec{v}_i (t) \cdot m_i (t) \vec{a}_i (t) \right) + 0+\displaystyle \sum_{i \in \mathbb{PM}} \left ( \vec{v}_i (t) \cdot \nabla U_i \left ( t, \vec{q}_i \right )  \right ) = \displaystyle\sum_{i \in \mathbb{PM}}\left( \vec{v}_i (t) \cdot \vec{F}_i (t) \right) + \displaystyle \sum_{i \in \mathbb{PM}} \left ( \vec{v}_i (t) \cdot \nabla U_i \left ( t, \vec{q}_i \right )  \right ) \\ 
-&= \displaystyle\sum_{i \in \mathbb{PM}}\left( \vec{v}_i (t) \cdot \vec{F}_i (t) + \vec{v}_i (t) \cdot \nabla U_i \left ( t, \vec{q}_i \right )  \right) = \displaystyle\sum_{i \in \mathbb{PM}}\left( \vec{v}_i (t) \cdot \left ( \vec{F}_i (t) + \nabla U_i \left ( t, \vec{q}_i \right )  \right ) \right) \\
-&= \displaystyle\sum_{i \in \mathbb{PM}}\left( \vec{v}_i (t) \cdot \left (- \nabla U_i \left ( t, \vec{q}_i \right )  + \nabla U_i \left ( t, \vec{q}_i \right )  \right ) \right) = \displaystyle\sum_{i \in \mathbb{PM}}\left( \vec{v}_i (t) \cdot \vec{0} \right) = \displaystyle\sum_{i \in \mathbb{PM}} 0 = 0\\
+&= \dfrac{1}{2}\displaystyle\sum_{i \in \mathbb{PM}}\left( m_i (t) \left ( \vec{v}_i (t) \cdot \vec{a}_i (t) + \vec{a}_i (t) \cdot \vec{v}_i (t)\right) \right ) + \lim_{t_c \to 0} \left ( \dfrac{ 0 }{t_c} \right ) +  \displaystyle \sum_{i \in \mathbb{PM}} \left ( \nabla U_i \left ( t, \vec{r}_i \right )  \cdot \vec{v}_i (t) \right ) \\
+&= \dfrac{1}{2}\displaystyle\sum_{i \in \mathbb{PM}}\left( m_i (t) \left ( 2 \vec{v}_i (t) \cdot \vec{a}_i (t)\right) \right ) + \lim_{t_c \to 0} \left (0 \right ) +  \displaystyle \sum_{i \in \mathbb{PM}} \left ( \vec{v}_i (t) \cdot \nabla U_i \left ( t, \vec{r}_i \right )  \right ) \\
+&= \displaystyle\sum_{i \in \mathbb{PM}}\left( \vec{v}_i (t) \cdot m_i (t) \vec{a}_i (t) \right) + 0+\displaystyle \sum_{i \in \mathbb{PM}} \left ( \vec{v}_i (t) \cdot \nabla U_i \left ( t, \vec{r}_i \right )  \right ) = \displaystyle\sum_{i \in \mathbb{PM}}\left( \vec{v}_i (t) \cdot \vec{F}_i (t) \right) + \displaystyle \sum_{i \in \mathbb{PM}} \left ( \vec{v}_i (t) \cdot \nabla U_i \left ( t, \vec{r}_i \right )  \right ) \\ 
+&= \displaystyle\sum_{i \in \mathbb{PM}}\left( \vec{v}_i (t) \cdot \vec{F}_i (t) + \vec{v}_i (t) \cdot \nabla U_i \left ( t, \vec{r}_i \right )  \right) = \displaystyle\sum_{i \in \mathbb{PM}}\left( \vec{v}_i (t) \cdot \left ( \vec{F}_i (t) + \nabla U_i \left ( t, \vec{r}_i \right )  \right ) \right) \\
+&= \displaystyle\sum_{i \in \mathbb{PM}}\left( \vec{v}_i (t) \cdot \left (- \nabla U_i \left ( t, \vec{r}_i \right )  + \nabla U_i \left ( t, \vec{r}_i \right )  \right ) \right) = \displaystyle\sum_{i \in \mathbb{PM}}\left( \vec{v}_i (t) \cdot \vec{0} \right) = \displaystyle\sum_{i \in \mathbb{PM}} 0 = 0\\
 \end{align*}
 $$\implies \dfrac{\mathrm{d} E}{\mathrm{d} t} = 0 \implies \int^{t_F}_{t_I} \left( \dfrac{\mathrm{d} E}{\mathrm{d} t} \right ) \mathrm{d} t = \int^{t_F}_{t_I} \left( 0 \right ) $$
 \begin{align*}\implies  E(t_F) -  E(t_I) = 0 \end{align*}
@@ -556,24 +633,24 @@ $$\implies \dfrac{\mathrm{d} E}{\mathrm{d} t} = 0 \implies \int^{t_F}_{t_I} \lef
 
 \begin{proof}
     Apply \textbf{Conservative System},
-    \begin{align*}\displaystyle \sum_{i \in \mathbb{PM}} \vec{F}_i (t) = \displaystyle \sum_{i \in \mathbb{PM}} \left ( - \nabla  U_i \left ( t, \vec{q}_{i} \right ) \right ) &= - \displaystyle \sum_{i \in \mathbb{PM}} \left ( \left < 0, \dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial x_i}, \dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial y_i}, \dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial z_i} \right > \right ) \\ &= - \displaystyle \sum_{i \in \mathbb{PM}} \left ( \left < 0, \dfrac{\partial U  (t, \vec{q}_\mathbb{PM})}{\partial x_i}, \dfrac{\partial U  (t, \vec{q}_\mathbb{PM})}{\partial y_i}, \dfrac{\partial U  (t, \vec{q}_\mathbb{PM})}{\partial z_i} \right > \right ) \end{align*}
+    \begin{align*}\displaystyle \sum_{i \in \mathbb{PM}} \vec{F}_i (t) = \displaystyle \sum_{i \in \mathbb{PM}} \left ( - \nabla  U_i \left ( t, \vec{r}_{i} \right ) \right ) &= - \displaystyle \sum_{i \in \mathbb{PM}} \left ( \left < 0, \dfrac{\partial  U_i \left ( t, \vec{r}_i \right )}{\partial x_i}, \dfrac{\partial  U_i \left ( t, \vec{r}_i \right )}{\partial y_i}, \dfrac{\partial  U_i \left ( t, \vec{r}_i \right )}{\partial z_i} \right > \right ) \\ &= - \displaystyle \sum_{i \in \mathbb{PM}} \left ( \left < 0, \dfrac{\partial U  (t, \vec{r}_\mathbb{PM})}{\partial x_i}, \dfrac{\partial U  (t, \vec{r}_\mathbb{PM})}{\partial y_i}, \dfrac{\partial U  (t, \vec{r}_\mathbb{PM})}{\partial z_i} \right > \right ) \end{align*}
      $$ = - \displaystyle \sum_{i \in \mathbb{PM}} \left( \begin{array}{c}
 0 \\
-\displaystyle \lim_{\vec{q}_c^{[\vec{e}_x]} \to 0} \left( \dfrac{\displaystyle \sum_{i \in \mathbb{PM}}  U_i(t, x_i+\vec{q}_c^{[\vec{e}_x]}, y_i, z_i)  - \displaystyle \sum_{i \in \mathbb{PM}}  U_i(t, x_i, y_i, z_i) }{\vec{q}_c^{[\vec{e}_x]}} \right) \\
-\displaystyle \lim_{\vec{q}_c^{[\vec{e}_y]} \to 0} \left( \dfrac{\displaystyle \sum_{i \in \mathbb{PM}}  U_i(t, x_i, y_i+\vec{q}_c^{[\vec{e}_y]}, z_i) - \displaystyle \sum_{i \in \mathbb{PM}}  U_i(t, x_i, y_i, z_i) }{\vec{q}_c^{[\vec{e}_y]}} \right) \\
-\displaystyle \lim_{\vec{q}_c^{[\vec{e}_z]} \to 0} \left( \dfrac{\displaystyle \sum_{i \in \mathbb{PM}} U_i(t, x_i, y_i, z_i+\vec{q}_c^{[\vec{e}_z]}) - \displaystyle \sum_{i \in \mathbb{PM}} U_i(t, x_i, y_i, z_i)}{\vec{q}_c^{[\vec{e}_z]}} \right)
+\displaystyle \lim_{\vec{r}_c^{[\vec{e}_x]} \to 0} \left( \dfrac{\displaystyle \sum_{i \in \mathbb{PM}}  U_i(t, x_i+\vec{r}_c^{[\vec{e}_x]}, y_i, z_i)  - \displaystyle \sum_{i \in \mathbb{PM}}  U_i(t, x_i, y_i, z_i) }{\vec{r}_c^{[\vec{e}_x]}} \right) \\
+\displaystyle \lim_{\vec{r}_c^{[\vec{e}_y]} \to 0} \left( \dfrac{\displaystyle \sum_{i \in \mathbb{PM}}  U_i(t, x_i, y_i+\vec{r}_c^{[\vec{e}_y]}, z_i) - \displaystyle \sum_{i \in \mathbb{PM}}  U_i(t, x_i, y_i, z_i) }{\vec{r}_c^{[\vec{e}_y]}} \right) \\
+\displaystyle \lim_{\vec{r}_c^{[\vec{e}_z]} \to 0} \left( \dfrac{\displaystyle \sum_{i \in \mathbb{PM}} U_i(t, x_i, y_i, z_i+\vec{r}_c^{[\vec{e}_z]}) - \displaystyle \sum_{i \in \mathbb{PM}} U_i(t, x_i, y_i, z_i)}{\vec{r}_c^{[\vec{e}_z]}} \right)
 \end{array} \right) $$
 Apply \textbf{Explicit Translational Invariance},
 $$ = - \displaystyle \sum_{i \in \mathbb{PM}} \left( \begin{array}{c}
 0 \\
-\displaystyle \lim_{\vec{q}_c^{[\vec{e}_x]} \to 0} \left( \dfrac{0}{\vec{q}_c^{[\vec{e}_x]}} \right) \\
-\displaystyle \lim_{\vec{q}_c^{[\vec{e}_y]} \to 0} \left( \dfrac{0}{\vec{q}_c^{[\vec{e}_y]}} \right) \\
-\displaystyle \lim_{\vec{q}_c^{[\vec{e}_z]} \to 0} \left( \dfrac{0}{\vec{q}_c^{[\vec{e}_z]}} \right)
+\displaystyle \lim_{\vec{r}_c^{[\vec{e}_x]} \to 0} \left( \dfrac{0}{\vec{r}_c^{[\vec{e}_x]}} \right) \\
+\displaystyle \lim_{\vec{r}_c^{[\vec{e}_y]} \to 0} \left( \dfrac{0}{\vec{r}_c^{[\vec{e}_y]}} \right) \\
+\displaystyle \lim_{\vec{r}_c^{[\vec{e}_z]} \to 0} \left( \dfrac{0}{\vec{r}_c^{[\vec{e}_z]}} \right)
 \end{array} \right) = - \displaystyle \sum_{i \in \mathbb{PM}} \left( \begin{array}{c}
 0 \\
-\displaystyle \lim_{\vec{q}_c^{[\vec{e}_x]} \to 0} \left( 0 \right) \\
-\displaystyle \lim_{\vec{q}_c^{[\vec{e}_y]} \to 0} \left( 0 \right) \\
-\displaystyle \lim_{\vec{q}_c^{[\vec{e}_z]} \to 0} \left( 0 \right)
+\displaystyle \lim_{\vec{r}_c^{[\vec{e}_x]} \to 0} \left( 0 \right) \\
+\displaystyle \lim_{\vec{r}_c^{[\vec{e}_y]} \to 0} \left( 0 \right) \\
+\displaystyle \lim_{\vec{r}_c^{[\vec{e}_z]} \to 0} \left( 0 \right)
 \end{array} \right) = - \displaystyle \sum_{i \in \mathbb{PM}} \left( \begin{array}{c}
 0 \\
 0 \\
@@ -586,13 +663,13 @@ $$\displaystyle \sum_{i \in \mathbb{PM}} \vec{F}_i (t) = \vec{0} \implies \vec{p
 \end{proof}
 
 \begin{definition}
-    \textbf{Lagrangian}: Lagrangian $\mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})$ is defined as $$ \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM}) := K \left ( t, \vec{v}_\mathbb{PM} \right ) -  U \left ( t, \vec{q}_\mathbb{PM} \right ) $$
+    \textbf{Lagrangian}: Lagrangian $\mathcal{L} (t, \vec{r}_\mathbb{PM}, \vec{v}_\mathbb{PM})$ is defined as $$ \mathcal{L} (t, \vec{r}_\mathbb{PM}, \vec{v}_\mathbb{PM}) := K \left ( t, \vec{v}_\mathbb{PM} \right ) -  U \left ( t, \vec{r}_\mathbb{PM} \right ) $$
 \end{definition}
 
 \begin{theorem}
     \textbf{Generalized Euler-Lagrange Equations}: In a physical space of $\left | \mathbb{PM} \right | = n$, the potential system is equivalent to 
     $$
-    \dfrac{\mathrm{d}}{\mathrm{d}  t} \left ( \dfrac{\partial \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{v}^{[a]}_i}  \right ) - \dfrac{\partial \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{q}^{[a]}_i} = \vec{\mathcal{F}}^{[a]}_i (t)
+    \dfrac{\mathrm{d}}{\mathrm{d}  t} \left ( \dfrac{\partial \mathcal{L} (t, \vec{r}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{v}^{[a]}_i}  \right ) - \dfrac{\partial \mathcal{L} (t, \vec{r}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{r}^{[a]}_i} = \vec{\mathcal{F}}^{[a]}_i (t)
     $$
     where $a \in \{ \vec{e}_x, \vec{e}_y, \vec{e}_z \}$
 \end{theorem}
@@ -600,16 +677,16 @@ $$\displaystyle \sum_{i \in \mathbb{PM}} \vec{F}_i (t) = \vec{0} \implies \vec{p
 \begin{proof}
 Apply \textbf{Lagrangian},
 \begin{align*}
-& \quad \ \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{v}^{[a]}_i}  \right ) - \dfrac{\partial \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{q}^{[a]}_i}\\
-&= \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial (K\left ( t, \vec{v}_\mathbb{PM} \right ) - U\left ( t, \vec{q}_\mathbb{PM} \right ))}{\partial \vec{v}^{[a]}_i}  \right ) - \dfrac{\partial (K\left ( t, \vec{v}_\mathbb{PM} \right )-U\left ( t, \vec{q}_\mathbb{PM} \right ))}{\partial \vec{q}^{[a]}_i} \\
-& = \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial K \left ( t, \vec{v}_\mathbb{PM} \right )}{\partial \vec{v}^{[a]}_i} - \dfrac{\partial U\left ( t, \vec{q}_\mathbb{PM} \right )}{\partial \vec{v}^{[a]}_i}  \right ) - \left ( \dfrac{\partial K\left ( t, \vec{v}_\mathbb{PM} \right )}{\partial \vec{q}^{[a]}_i} - \dfrac{\partial U\left ( t, \vec{q}_\mathbb{PM} \right )}{\partial \vec{q}^{[a]}_i} \right )
+& \quad \ \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial \mathcal{L} (t, \vec{r}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{v}^{[a]}_i}  \right ) - \dfrac{\partial \mathcal{L} (t, \vec{r}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{r}^{[a]}_i}\\
+&= \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial (K\left ( t, \vec{v}_\mathbb{PM} \right ) - U\left ( t, \vec{r}_\mathbb{PM} \right ))}{\partial \vec{v}^{[a]}_i}  \right ) - \dfrac{\partial (K\left ( t, \vec{v}_\mathbb{PM} \right )-U\left ( t, \vec{r}_\mathbb{PM} \right ))}{\partial \vec{r}^{[a]}_i} \\
+& = \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial K \left ( t, \vec{v}_\mathbb{PM} \right )}{\partial \vec{v}^{[a]}_i} - \dfrac{\partial U\left ( t, \vec{r}_\mathbb{PM} \right )}{\partial \vec{v}^{[a]}_i}  \right ) - \left ( \dfrac{\partial K\left ( t, \vec{v}_\mathbb{PM} \right )}{\partial \vec{r}^{[a]}_i} - \dfrac{\partial U\left ( t, \vec{r}_\mathbb{PM} \right )}{\partial \vec{r}^{[a]}_i} \right )
 \end{align*}
 Apply \textbf{Total Kinetic Energy} and \textbf{Total Potential Energy},
 \begin{align*}
-& = \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial \left (\displaystyle \sum_{i \in \mathbb{PM}} K_i (t, \vec{v}_i) \right )}{\partial \vec{v}^{[a]}_i} - \dfrac{\partial \left ( \displaystyle \sum_{i \in \mathbb{PM}} U_i \left ( t, \vec{q}_i \right )\right )}{\partial \vec{v}^{[a]}_i}  \right ) - \left ( \dfrac{\partial \left ( \displaystyle \sum_{i \in \mathbb{PM}} K_i (t, \vec{v}_i) \right )}{\partial \vec{q}^{[a]}_i} - \dfrac{\partial \left ( \displaystyle \sum_{i \in \mathbb{PM}} U_i \left ( t, \vec{q}_i \right ) \right )}{\partial \vec{q}^{[a]}_i} \right )\\
-& = \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial K_i (t, \vec{v}_i) }{\partial \vec{v}^{[a]}_i} - \dfrac{\partial U_i \left ( t, \vec{q}_i \right )}{\partial \vec{v}^{[a]}_i}  \right ) - \left ( \dfrac{\partial K_i (t, \vec{v}_i)}{\partial \vec{q}^{[a]}_i} - \dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial \vec{q}^{[a]}_i} \right )\\
-& = \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial K_i (t, \vec{v}_i)}{\partial \vec{v}^{[a]}_i} - 0 \right ) - \left ( 0 - \dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial \vec{q}^{[a]}_i} \right ) = - \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial K_i (t, \vec{v}_i)}{\partial \vec{v}^{[a]}_i} \right ) - \left ( - \dfrac{\partial  U_i \left ( t, \vec{q}_i \right )}{\partial \vec{q}^{[a]}_i} \right ) \\
-& = \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial K_i (t, \vec{v}_i)}{\partial \vec{v}^{[a]}_i} \right ) - \left ( - \nabla U_i \left ( t, \vec{q}_i \right ) \right )^{[a]}
+& = \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial \left (\displaystyle \sum_{i \in \mathbb{PM}} K_i (t, \vec{v}_i) \right )}{\partial \vec{v}^{[a]}_i} - \dfrac{\partial \left ( \displaystyle \sum_{i \in \mathbb{PM}} U_i \left ( t, \vec{r}_i \right )\right )}{\partial \vec{v}^{[a]}_i}  \right ) - \left ( \dfrac{\partial \left ( \displaystyle \sum_{i \in \mathbb{PM}} K_i (t, \vec{v}_i) \right )}{\partial \vec{r}^{[a]}_i} - \dfrac{\partial \left ( \displaystyle \sum_{i \in \mathbb{PM}} U_i \left ( t, \vec{r}_i \right ) \right )}{\partial \vec{r}^{[a]}_i} \right )\\
+& = \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial K_i (t, \vec{v}_i) }{\partial \vec{v}^{[a]}_i} - \dfrac{\partial U_i \left ( t, \vec{r}_i \right )}{\partial \vec{v}^{[a]}_i}  \right ) - \left ( \dfrac{\partial K_i (t, \vec{v}_i)}{\partial \vec{r}^{[a]}_i} - \dfrac{\partial  U_i \left ( t, \vec{r}_i \right )}{\partial \vec{r}^{[a]}_i} \right )\\
+& = \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial K_i (t, \vec{v}_i)}{\partial \vec{v}^{[a]}_i} - 0 \right ) - \left ( 0 - \dfrac{\partial  U_i \left ( t, \vec{r}_i \right )}{\partial \vec{r}^{[a]}_i} \right ) = - \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial K_i (t, \vec{v}_i)}{\partial \vec{v}^{[a]}_i} \right ) - \left ( - \dfrac{\partial  U_i \left ( t, \vec{r}_i \right )}{\partial \vec{r}^{[a]}_i} \right ) \\
+& = \dfrac{\mathrm{d}}{\mathrm{d} t} \left ( \dfrac{\partial K_i (t, \vec{v}_i)}{\partial \vec{v}^{[a]}_i} \right ) - \left ( - \nabla U_i \left ( t, \vec{r}_i \right ) \right )^{[a]}
 \end{align*}
 Apply \textbf{Potential System} and \textbf{Kinetic Energy},
 \begin{align*}
@@ -622,21 +699,21 @@ Apply \textbf{Linear Momentum (1)} and \textbf{Newton's 2nd Law},
     \begin{align*}
 & = \left ( \dfrac{\mathrm{d} \vec{p}_i (t)}{\mathrm{d} t} \right )^{[a]} - \vec{F}^{[a]}_i (t) + \vec{\mathcal{F}}^{[a]}_i (t) = \vec{F}_i^{[a]} (t) - \vec{F}^{[a]}_i (t) + \vec{\mathcal{F}}^{[a]}_i (t) = \vec{\mathcal{F}}^{[a]}_i (t) \\
     \end{align*}
-    $$\Longleftrightarrow  \dfrac{\mathrm{d}}{\mathrm{d}  t} \left ( \dfrac{\partial \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{v}^{[a]}_i}  \right ) - \dfrac{\partial \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{q}^{[a]}_i } = \vec{\mathcal{F}}^{[a]}_i (t)$$
+    $$\Longleftrightarrow  \dfrac{\mathrm{d}}{\mathrm{d}  t} \left ( \dfrac{\partial \mathcal{L} (t, \vec{r}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{v}^{[a]}_i}  \right ) - \dfrac{\partial \mathcal{L} (t, \vec{r}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{r}^{[a]}_i } = \vec{\mathcal{F}}^{[a]}_i (t)$$
 \end{proof}
 
 
 \begin{theorem}
     \textbf{Euler-Lagrange Equations}: In a physical space of $\left | \mathbb{PM} \right | = n$, the conservative system is equivalent to 
     $$
-    \dfrac{\mathrm{d}}{\mathrm{d}  t} \left ( \dfrac{\partial \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{v}^{[a]}_i}  \right ) - \dfrac{\partial \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{q}^{[a]}_i} = 0
+    \dfrac{\mathrm{d}}{\mathrm{d}  t} \left ( \dfrac{\partial \mathcal{L} (t, \vec{r}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{v}^{[a]}_i}  \right ) - \dfrac{\partial \mathcal{L} (t, \vec{r}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{r}^{[a]}_i} = 0
     $$
     where $a \in \{ \vec{e}_x, \vec{e}_y, \vec{e}_z \}$
 \end{theorem}
 
 \begin{proof}
     Apply \textbf{Generalized Euler-Lagrange Equations} and \textbf{Conservative System},
-    $$\Longleftrightarrow \dfrac{\mathrm{d}}{\mathrm{d}  t} \left ( \dfrac{\partial \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{v}^{[a]}_i}  \right ) - \dfrac{\partial \mathcal{L} (t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{q}^{[a]}_i } = \vec{\mathcal{F}}^{[a]}_i (t) = 0$$
+    $$\Longleftrightarrow \dfrac{\mathrm{d}}{\mathrm{d}  t} \left ( \dfrac{\partial \mathcal{L} (t, \vec{r}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{v}^{[a]}_i}  \right ) - \dfrac{\partial \mathcal{L} (t, \vec{r}_\mathbb{PM}, \vec{v}_\mathbb{PM})}{\partial \vec{r}^{[a]}_i } = \vec{\mathcal{F}}^{[a]}_i (t) = 0$$
 \end{proof}
 
 
@@ -687,11 +764,11 @@ This appendix outlines the notations, symbols, and axioms utilized in this paper
    $$
    In this paper, we adhere to the convention of using $f$ to denote the composite function $z$, avoiding the introduction of new functions like $z$ and $g$. When we write $\dfrac{\mathrm{d} f}{\mathrm{d} t}$, it is implicitly understood that $f$ is composed with time-dependent variables $g(t)$. To highlight this dependency, we denote the function as $f(t)$. For instance, if $f(x, y)$ is a function of two variables, then $f(t)$ refers to $f(x(t), y(t))$, where $x = x(t)$ and $y = y(t)$.
 
-   This convention extends naturally to the simplification of multi-variable functions with time-dependent arguments. For example, if a function $E: \mathbb{R} \times (\mathbb{R}^4)^2 \to \mathbb{R}$ is defined, such as the total mechanical energy $E(t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})$, we automatically define a reduced function $E: \mathbb{R} \to \mathbb{R}$ by substituting time-dependent variables into $E$:
+   This convention extends naturally to the simplification of multi-variable functions with time-dependent arguments. For example, if a function $E: \mathbb{R} \times (\mathbb{R}^4)^2 \to \mathbb{R}$ is defined, such as the total mechanical energy $E(t, \vec{r}_\mathbb{PM}, \vec{v}_\mathbb{PM})$, we automatically define a reduced function $E: \mathbb{R} \to \mathbb{R}$ by substituting time-dependent variables into $E$:
    $$
-   E(t) := E(t, \vec{q}_\mathbb{PM}(t), \vec{v}_\mathbb{PM}(t))
+   E(t) := E(t, \vec{r}_\mathbb{PM}(t), \vec{v}_\mathbb{PM}(t))
    $$
-   The reduced function $E(t)$ has the type $\mathbb{R} \to \mathbb{R}$ and is employed to streamline expressions and computations. By treating time-dependent arguments as implicit, we maintain consistency with the ordinary derivative convention. Therefore, when $E(t)$ is written instead of $E(t, \vec{q}_\mathbb{PM}, \vec{v}_\mathbb{PM})$, it is understood that $\vec{q}_\mathbb{PM}$ and $\vec{v}_\mathbb{PM}$ depend on $t$.
+   The reduced function $E(t)$ has the type $\mathbb{R} \to \mathbb{R}$ and is employed to streamline expressions and computations. By treating time-dependent arguments as implicit, we maintain consistency with the ordinary derivative convention. Therefore, when $E(t)$ is written instead of $E(t, \vec{r}_\mathbb{PM}, \vec{v}_\mathbb{PM})$, it is understood that $\vec{r}_\mathbb{PM}$ and $\vec{v}_\mathbb{PM}$ depend on $t$.
 
    This approach avoids introducing additional symbols, such as $z(t)$, enhancing the readability of expressions. It ensures that complex multi-variable functions are expressed compactly while preserving their underlying meaning, applicable not only in the context of derivatives but also in general usage.
    
@@ -708,7 +785,7 @@ In this paper, we adopt the following conventions for interpreting equality and 
 
 \textbf{Inequality ($\neq$)}: Unless explicitly specified otherwise, inequality is interpreted as an existential statement for $t \in \mathbb{R}$. This means there exists at least one value in the relevant domain for which the inequality holds. For instance, consider the definition of a non-conservative system:
    \begin{definition*}
-    \textbf{Non-Conservative System}: In a physical space of $\left | \mathbb{PM} \right | = n$, the non-conservative system is the potential system with the non-conservative force $\vec{\mathcal{F}}_i$, which $$\forall \  i \in \mathbb{PM}, \quad \vec{F}_i (t) = - \nabla U_i \left ( t, \vec{q}_i  \right) + \vec{\mathcal{F}}_i(t) $$ where $ \nabla  U_i \left ( t, \vec{q}_i \right )  = \left < 0, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial x_i}, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial y_i}, \dfrac{\partial U_i (t, \vec{q}_i)}{\partial z_i} \right >, \quad \vec{\mathcal{F}}_i (t) \ne \vec{0} $
+    \textbf{Non-Conservative System}: In a physical space of $\left | \mathbb{PM} \right | = n$, the non-conservative system is the potential system with the non-conservative force $\vec{\mathcal{F}}_i$, which $$\forall \  i \in \mathbb{PM}, \quad \vec{F}_i (t) = - \nabla U_i \left ( t, \vec{r}_i  \right) + \vec{\mathcal{F}}_i(t) $$ where $ \nabla  U_i \left ( t, \vec{r}_i \right )  = \left < 0, \dfrac{\partial U_i (t, \vec{r}_i)}{\partial x_i}, \dfrac{\partial U_i (t, \vec{r}_i)}{\partial y_i}, \dfrac{\partial U_i (t, \vec{r}_i)}{\partial z_i} \right >, \quad \vec{\mathcal{F}}_i (t) \ne \vec{0} $
 \end{definition*}
    Here, the condition $\vec{\mathcal{F}}_i(t) \neq \vec{0}$ implies the existence of at least one $t \in \mathbb{R}$ such that $\vec{\mathcal{F}}_i(t) \neq \vec{0}$.
 
